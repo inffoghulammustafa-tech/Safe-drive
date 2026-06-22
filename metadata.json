@@ -1,0 +1,6 @@
+{
+  "name": "GoDriveify",
+  "description": "Faisalabad’s premium driving school with customized training plans, an interactive traffic signs simulator, and a smart DLIMS license assistant.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
