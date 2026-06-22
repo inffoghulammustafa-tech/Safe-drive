@@ -216,7 +216,7 @@ export const Hero: React.FC<HeroProps> = ({ onActionClick, activeTab, setActiveT
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-20 w-full">
         {/* Badge Indicator */}
-        <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide bg-orange-500/10 text-orange-600 border border-orange-500/20 mb-6 uppercase">
+        <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide bg-black text-white shadow-md shadow-black/20 mb-6 uppercase">
           <MapPin className="w-3.5 h-3.5 text-orange-500" />
           Faisalabad's First Smart Digital Driving School
         </span>
