@@ -46,67 +46,67 @@ export const SignQuiz: React.FC = () => {
   const isPass = score >= 6;
 
   return (
-    <section id="quiz" className="py-24 bg-[#080d1a] border-t border-white/[0.04] relative">
-      <div className="absolute top-0 right-1/4 w-80 h-80 bg-cyan-500/5 rounded-full blur-[140px] pointer-events-none"></div>
+    <section id="quiz" className="py-24 bg-white border-t border-neutral-100 relative">
+      <div className="absolute top-0 right-1/4 w-80 h-80 bg-orange-500/5 rounded-full blur-[140px] pointer-events-none"></div>
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
         {/* Title */}
         <div className="text-center mb-12">
-          <span className="px-3 py-1 rounded-full text-xs font-semibold tracking-wide bg-amber-500/10 text-amber-300 border border-amber-500/20 uppercase">
+          <span className="px-3 py-1 rounded-full text-xs font-semibold tracking-wide bg-orange-500/10 text-orange-700 border border-orange-500/20 uppercase">
             Official Prep Mode
           </span>
-          <h2 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-white via-neutral-100 to-gray-400 bg-clip-text text-transparent mt-3 mb-3">
+          <h2 className="text-3xl sm:text-4xl font-black text-neutral-950 mt-3 mb-3">
             Traffic Signs Theory Simulator
           </h2>
-          <p className="text-gray-400 text-xs sm:text-sm max-w-xl mx-auto">
+          <p className="text-neutral-600 text-xs sm:text-sm max-w-xl mx-auto">
             Get 100% prepared to clear Punjab’s official DLIMS computerized sign examination on your very first try. Test your road instincts below!
           </p>
         </div>
 
         {/* QUIZ ACTIVE VIEW */}
         {!quizCompleted ? (
-          <div className="bg-[#0b1122]/60 rounded-3xl border border-white/[0.06] p-6 sm:p-8 backdrop-blur-md shadow-2xl space-y-6">
+          <div className="bg-white rounded-3xl border border-neutral-200 p-6 sm:p-8 shadow-sm space-y-6">
             
             {/* Top Score Tracker / Progress Bar */}
             <div className="flex items-center justify-between gap-4">
-              <span className="text-xs text-gray-400 font-bold uppercase tracking-wider">
+              <span className="text-xs text-neutral-500 font-bold uppercase tracking-wider">
                 Question {currentIndex + 1} of {QUIZ_QUESTIONS.length}
               </span>
               <div className="flex items-center gap-2">
-                <span className="text-xs font-semibold text-cyan-400 bg-cyan-500/10 px-2 py-0.5 rounded">
+                <span className="text-xs font-semibold text-orange-600 bg-orange-500/10 px-2 py-0.5 rounded">
                   Correct Spotlights: {score}
                 </span>
               </div>
             </div>
 
             {/* Micro Progress Bar graph */}
-            <div className="w-full h-1.5 bg-white/5 rounded-full overflow-hidden">
+            <div className="w-full h-1.5 bg-neutral-100 rounded-full overflow-hidden">
               <div
-                className="h-full bg-gradient-to-r from-cyan-500 to-teal-400 transition-all duration-300"
+                className="h-full bg-gradient-to-r from-orange-500 to-orange-600 transition-all duration-300"
                 style={{ width: `${((currentIndex + 1) / QUIZ_QUESTIONS.length) * 100}%` }}
               ></div>
             </div>
 
             {/* Question Card Box */}
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center bg-[#060913]/40 p-6 rounded-2xl border border-white/[0.04]">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center bg-neutral-50 p-6 rounded-2xl border border-neutral-200">
               {/* Left Column: Huge Vector Sign Display */}
-              <div className="md:col-span-4 flex flex-col justify-center items-center py-4 bg-[#0b1122] rounded-xl border border-white/5">
+              <div className="md:col-span-4 flex flex-col justify-center items-center py-4 bg-white rounded-xl border border-neutral-200">
                 <TrafficSignSvg type={activeQuestion.svgType} className="w-32 h-32 transform hover:scale-105 transition-transform" />
-                <span className="text-[10px] uppercase text-gray-500 tracking-widest font-black mt-4">
+                <span className="text-[10px] uppercase text-neutral-500 tracking-widest font-black mt-4">
                   {activeQuestion.category}
                 </span>
               </div>
 
               {/* Right Column: Question Statement & Title */}
               <div className="md:col-span-8 space-y-3">
-                <h3 className="text-xl font-bold text-white leading-snug">
+                <h3 className="text-xl font-bold text-neutral-900 leading-snug">
                   What does this road sign indicate?
                 </h3>
-                <p className="text-sm font-medium text-teal-400 italic">
+                <p className="text-sm font-semibold text-orange-600 italic">
                   Urdu Context: "{activeQuestion.signName}"
                 </p>
-                <div className="flex items-center gap-1.5 text-xs text-gray-400">
-                  <HelpCircle className="w-4 h-4 text-cyan-400" />
+                <div className="flex items-center gap-1.5 text-xs text-neutral-600">
+                  <HelpCircle className="w-4 h-4 text-orange-600" />
                   <span>Choose correct legal compliance rule under traffic police codes:</span>
                 </div>
               </div>
@@ -118,15 +118,15 @@ export const SignQuiz: React.FC = () => {
                 const isSelected = selectedAnswerIndex === idx;
                 const isCorrect = idx === activeQuestion.correctAnswerIndex;
 
-                let optionStyle = "bg-white/[0.01] border-white/5 hover:border-cyan-400/30 hover:bg-white/[0.03] text-gray-300";
+                let optionStyle = "bg-neutral-50 border-neutral-200 hover:border-orange-500 hover:bg-neutral-105/10 text-neutral-800";
                 
                 if (isAnswered) {
                   if (isCorrect) {
-                     optionStyle = "bg-emerald-500/10 border-emerald-500/50 text-emerald-300 font-bold ring-1 ring-emerald-500/30";
+                     optionStyle = "bg-emerald-500/10 border-emerald-500/50 text-emerald-800 font-bold ring-1 ring-emerald-500/30";
                   } else if (isSelected) {
-                     optionStyle = "bg-rose-500/10 border-rose-500/50 text-rose-300 font-bold ring-1 ring-rose-500/30";
+                     optionStyle = "bg-rose-500/10 border-rose-500/50 text-rose-800 font-bold ring-1 ring-rose-500/30";
                   } else {
-                     optionStyle = "bg-white/[0.005] border-white/5 text-gray-500 opacity-60";
+                     optionStyle = "bg-neutral-50 border-neutral-100 text-neutral-400 opacity-60";
                   }
                 }
 
@@ -140,10 +140,10 @@ export const SignQuiz: React.FC = () => {
                     <span>{option}</span>
                     
                     {isAnswered && isCorrect && (
-                      <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
+                      <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
                     )}
                     {isAnswered && isSelected && !isCorrect && (
-                      <XCircle className="w-5 h-5 text-rose-400 shrink-0" />
+                      <XCircle className="w-5 h-5 text-rose-600 shrink-0" />
                     )}
                   </button>
                 );
@@ -152,17 +152,17 @@ export const SignQuiz: React.FC = () => {
 
             {/* Answer Explanation Panel */}
             {isAnswered && (
-              <div className="p-5 bg-[#0d152a] rounded-xl border border-cyan-500/20 space-y-2 animate-fade-in text-xs leading-relaxed">
-                <div className="flex items-center gap-1.5 text-cyan-400 font-bold">
+              <div className="p-5 bg-orange-50/50 rounded-xl border border-orange-200/50 space-y-2 animate-fade-in text-xs leading-relaxed">
+                <div className="flex items-center gap-1.5 text-orange-600 font-bold">
                   <AlertTriangle className="w-4 h-4" />
                   <span>Sign Rule Clarification (Punjab DLIMS Guidelines):</span>
                 </div>
-                <p className="text-gray-300">{activeQuestion.explanation}</p>
+                <p className="text-neutral-700">{activeQuestion.explanation}</p>
 
                 <div className="flex justify-end pt-2">
                   <button
                     onClick={handleNextClick}
-                    className="px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-teal-400 text-white font-bold text-xs flex items-center gap-1.5 hover:scale-105 active:scale-95 transition-all cursor-pointer"
+                    className="px-4 py-2 rounded-xl bg-neutral-600 hover:bg-neutral-700 text-white font-bold text-xs flex items-center gap-1.5 hover:scale-105 active:scale-95 transition-all cursor-pointer"
                   >
                     {currentIndex + 1 === QUIZ_QUESTIONS.length ? "Finish Practice" : "Next Question"}
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -173,19 +173,19 @@ export const SignQuiz: React.FC = () => {
           </div>
         ) : (
           // QUIZ COMPLETE VIEW (RESULT SLATE)
-          <div className="bg-[#0b1122]/70 rounded-3xl border border-white/[0.06] p-8 text-center backdrop-blur-md shadow-2xl max-w-2xl mx-auto space-y-6">
+          <div className="bg-white rounded-3xl border border-neutral-200 p-8 text-center shadow-md max-w-2xl mx-auto space-y-6">
             
             <div className="flex justify-center flex-col items-center">
               <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-4 ${
-                isPass ? "bg-emerald-500/15 text-emerald-400" : "bg-rose-500/15 text-rose-400"
+                isPass ? "bg-emerald-500/15 text-emerald-600" : "bg-rose-500/15 text-rose-600"
               }`}>
                 <Award className="w-10 h-10" />
               </div>
 
-              <h3 className="text-2xl font-black text-white">
+              <h3 className="text-2xl font-black text-neutral-900">
                 {isPass ? "Mubarak Ho! You Passed." : "Practice Required!"}
               </h3>
-              <p className="text-xs text-gray-400 mt-1 uppercase tracking-wider">
+              <p className="text-xs text-neutral-500 mt-1 uppercase tracking-wider">
                 Practice Score: {score} out of {QUIZ_QUESTIONS.length} Questions Correct
               </p>
             </div>
@@ -193,8 +193,8 @@ export const SignQuiz: React.FC = () => {
             {/* Pass / Fail Gauge Indicator */}
             <div className={`p-4 rounded-xl border max-w-md mx-auto text-xs ${
               isPass 
-                ? "bg-emerald-500/10 border-emerald-500/20 text-emerald-300"
-                : "bg-amber-500/10 border-amber-500/25 text-amber-300"
+                ? "bg-emerald-50 border-emerald-200 text-emerald-800"
+                : "bg-orange-50 border-orange-200 text-orange-800"
             }`}>
               {isPass ? (
                 <p className="leading-relaxed">
@@ -207,23 +207,23 @@ export const SignQuiz: React.FC = () => {
               )}
             </div>
 
-            <div className="w-full h-px bg-white/[0.05] my-2"></div>
+            <div className="w-full h-px bg-neutral-200 my-2"></div>
 
             {/* Quick stats on regulatory vs warnings */}
-            <div className="grid grid-cols-2 gap-4 text-xs font-medium text-gray-400">
-              <div className="p-3 bg-white/[0.01] rounded-lg border border-white/5">
-                <span className="block text-gray-500 text-[10px] uppercase font-bold">Passing Ratio</span>
-                <span className="text-white text-base font-black">{Math.round((score / QUIZ_QUESTIONS.length) * 100)}%</span>
+            <div className="grid grid-cols-2 gap-4 text-xs font-semibold text-neutral-605">
+              <div className="p-3 bg-neutral-50 rounded-lg border border-neutral-200">
+                <span className="block text-neutral-500 text-[10px] uppercase font-bold">Passing Ratio</span>
+                <span className="text-neutral-900 text-base font-black">{Math.round((score / QUIZ_QUESTIONS.length) * 100)}%</span>
               </div>
-              <div className="p-3 bg-white/[0.01] rounded-lg border border-white/5">
-                <span className="block text-gray-500 text-[10px] uppercase font-bold">Standard Requirement</span>
-                <span className="text-white text-base font-black">80% in Punjab</span>
+              <div className="p-3 bg-neutral-50 rounded-lg border border-neutral-200">
+                <span className="block text-neutral-500 text-[10px] uppercase font-bold">Standard Requirement</span>
+                <span className="text-neutral-900 text-base font-black">80% in Punjab</span>
               </div>
             </div>
 
             <button
               onClick={handleRestart}
-              className="px-6 py-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 text-white font-bold text-xs flex items-center gap-2 mx-auto cursor-pointer"
+              className="px-6 py-3 rounded-xl bg-neutral-600 hover:bg-neutral-700 text-white font-bold text-xs flex items-center gap-2 mx-auto cursor-pointer"
             >
               <RotateCcw className="w-3.5 h-3.5" />
               Retake Practice Quiz

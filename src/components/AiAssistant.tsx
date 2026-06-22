@@ -99,19 +99,19 @@ export const AiAssistant: React.FC = () => {
       const boldSegments = text.split(/\*\*([^*]+)\*\*/g);
       const renderedSegments = boldSegments.map((seg, sIdx) => {
         // odd indices correspond to captured bold text segments
-        return sIdx % 2 === 1 ? <strong key={sIdx} className="text-cyan-300 font-bold">{seg}</strong> : seg;
+        return sIdx % 2 === 1 ? <strong key={sIdx} className="text-orange-600 font-extrabold">{seg}</strong> : seg;
       });
 
       if (isBullet) {
         return (
-          <li key={idx} className="ml-5 list-disc text-gray-300 mt-1 pl-1">
+          <li key={idx} className="ml-5 list-disc text-neutral-800 mt-1 pl-1">
             {renderedSegments}
           </li>
         );
       }
 
       return (
-        <p key={idx} className="text-gray-305 leading-relaxed min-h-[0.5rem] mt-1">
+        <p key={idx} className="text-neutral-700 leading-relaxed min-h-[0.5rem] mt-1">
           {renderedSegments}
         </p>
       );
@@ -119,51 +119,51 @@ export const AiAssistant: React.FC = () => {
   };
 
   return (
-    <section id="ai-advisor" className="py-24 relative bg-[#060913]">
-      <div className="absolute top-1/4 right-0 w-96 h-96 bg-[#00f2fe]/5 rounded-full blur-[140px] pointer-events-none"></div>
+    <section id="ai-advisor" className="py-24 relative bg-white">
+      <div className="absolute top-1/4 right-0 w-96 h-96 bg-orange-500/5 rounded-full blur-[140px] pointer-events-none"></div>
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
         {/* Section Title */}
         <div className="text-center mb-12">
-          <span className="text-cyan-400 uppercase font-extrabold tracking-widest text-xs">AI Integration</span>
-          <h2 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-white via-gray-100 to-gray-400 bg-clip-text text-transparent mt-2 mb-3">
+          <span className="text-orange-605 uppercase font-extrabold tracking-widest text-xs">AI Integration</span>
+          <h2 className="text-3xl sm:text-4xl font-black text-neutral-950 mt-2 mb-3">
             GoDriveify DLIMS Assistant
           </h2>
-          <p className="text-gray-400 text-xs sm:text-sm max-w-xl mx-auto">
+          <p className="text-neutral-650 text-xs sm:text-sm max-w-xl mx-auto">
             Aapka driving license pass karne wala dost. Instant legal guidelines on Punjab traffic code, theory exams, files and licensing fee systems.
           </p>
         </div>
 
         {/* Chat box container */}
-        <div className="bg-[#0b1122]/60 rounded-3xl border border-white/[0.08] backdrop-blur-md shadow-2xl overflow-hidden flex flex-col h-[580px]">
+        <div className="bg-white rounded-3xl border border-neutral-200 shadow-sm overflow-hidden flex flex-col h-[580px]">
           {/* Header */}
-          <div className="px-6 py-4 bg-white/[0.02] border-b border-white/[0.05] flex items-center justify-between">
+          <div className="px-6 py-4 bg-neutral-50 border-b border-neutral-200 flex items-center justify-between">
             <div className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-r from-cyan-500 to-rose-500 flex items-center justify-center text-white font-bold shrink-0 animate-pulse">
+              <div className="w-9 h-9 rounded-xl bg-orange-500 flex items-center justify-center text-white font-bold shrink-0">
                 <Sparkles className="w-5 h-5 text-white" />
               </div>
               <div>
-                <h4 className="text-sm font-bold text-white flex items-center gap-1.5">
+                <h4 className="text-sm font-bold text-neutral-900 flex items-center gap-1.5">
                   Road Safety Guru
-                  <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span>
+                  <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-ping"></span>
                 </h4>
-                <p className="text-[10px] text-cyan-400">Powered by Gemini 3.5 Flash</p>
+                <p className="text-[10px] text-orange-600 font-extrabold">Powered by Gemini 3.5 Flash</p>
               </div>
             </div>
-            <div className="text-[10px] font-mono text-gray-500">
+            <div className="text-[10px] font-mono text-neutral-500">
               English &amp; Roman Urdu Ready
             </div>
           </div>
 
           {/* Quick suggestions rail */}
-          <div className="px-6 py-3 bg-white/[0.01] border-b border-white/[0.03] flex flex-wrap items-center gap-2">
-            <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mr-1.5">Frequently Asked:</span>
+          <div className="px-6 py-3 bg-neutral-50/50 border-b border-neutral-200 flex flex-wrap items-center gap-2">
+            <span className="text-[10px] font-bold text-neutral-500 uppercase tracking-widest mr-1.5">Frequently Asked:</span>
             {samplePrompts.map((p, index) => (
               <button
                 key={index}
                 onClick={() => handleSendMessage(p.text)}
                 disabled={isLoading}
-                className="px-3 py-1 rounded-full text-[11px] bg-white/[0.03] text-gray-300 hover:bg-cyan-500/10 hover:text-cyan-300 border border-white/5 hover:border-cyan-500/20 active:scale-95 transition-all text-left truncate cursor-pointer disabled:opacity-50"
+                className="px-3 py-1 rounded-full text-[11px] bg-white text-neutral-700 hover:bg-orange-50 hover:text-orange-600 border border-neutral-200 hover:border-orange-200 active:scale-95 transition-all text-left truncate cursor-pointer disabled:opacity-50"
               >
                 {p.label}
               </button>
@@ -171,32 +171,32 @@ export const AiAssistant: React.FC = () => {
           </div>
 
           {/* Messages Area */}
-          <div className="flex-1 overflow-y-auto px-6 py-6 space-y-4">
+          <div className="flex-1 overflow-y-auto px-6 py-6 space-y-4 bg-white">
             {messages.map((m) => {
               const isBot = m.sender === "bot";
               return (
                 <div key={m.id} className={`flex gap-3.5 ${isBot ? "justify-start" : "justify-end"}`}>
                   {isBot && (
-                    <div className="w-8 h-8 rounded-full bg-cyan-700/20 flex items-center justify-center text-cyan-400 border border-cyan-500/10 shrink-0 self-start mt-0.5">
+                    <div className="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 border border-orange-200 shrink-0 self-start mt-0.5">
                       <Sparkles className="w-4 h-4" />
                     </div>
                   )}
 
                   <div className={`max-w-[78%] rounded-2xl p-4 text-xs sm:text-sm space-y-1 ${
                     isBot 
-                      ? "bg-slate-900/60 border border-white/[0.04] text-gray-200" 
-                      : "bg-gradient-to-br from-cyan-600 to-cyan-700 text-white font-medium"
+                      ? "bg-neutral-50 border border-neutral-200 text-neutral-800" 
+                      : "bg-neutral-600 text-white font-medium"
                   }`}>
                     <div className="space-y-1 block">
                       {renderFormattedText(m.text)}
                     </div>
-                    <span className="block text-[9px] text-right opacity-50 mt-1.5">
+                    <span className="block text-[9px] text-right mt-1.5 opacity-50">
                       {m.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                     </span>
                   </div>
 
                   {!isBot && (
-                    <div className="w-8 h-8 rounded-full bg-rose-700/25 flex items-center justify-center text-rose-300 border border-rose-500/10 shrink-0 self-start mt-0.5">
+                    <div className="w-8 h-8 rounded-full bg-neutral-100 flex items-center justify-center text-neutral-600 border border-neutral-200 shrink-0 self-start mt-0.5">
                       <User className="w-4 h-4" />
                     </div>
                   )}
@@ -207,11 +207,11 @@ export const AiAssistant: React.FC = () => {
             {/* Loading / Typing indicator */}
             {isLoading && (
               <div className="flex gap-3.5 justify-start">
-                <div className="w-8 h-8 rounded-full bg-cyan-700/20 flex items-center justify-center text-cyan-400 border border-cyan-500/10 shrink-0">
-                  <Sparkles className="w-4 h-4" />
+                <div className="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 border border-orange-200 shrink-0">
+                  <Sparkles className="w-4 h-4 animate-pulse" />
                 </div>
-                <div className="bg-slate-900/60 border border-white/[0.04] rounded-2xl p-4 text-xs sm:text-sm text-gray-400 flex items-center gap-2">
-                  <Loader2 className="w-3.5 h-3.5 animate-spin text-cyan-400" />
+                <div className="bg-neutral-50 border border-neutral-200 rounded-2xl p-4 text-xs sm:text-sm text-neutral-750 flex items-center gap-2">
+                  <Loader2 className="w-3.5 h-3.5 animate-spin text-orange-600" />
                   <span>Thinking on Punjab Traffic codes... Please wait</span>
                 </div>
               </div>
@@ -220,7 +220,7 @@ export const AiAssistant: React.FC = () => {
           </div>
 
           {/* User Input actions bar */}
-          <div className="p-4 bg-white/[0.01] border-t border-white/[0.04] flex gap-2">
+          <div className="p-4 bg-neutral-50 border-t border-neutral-200 flex gap-2">
             <input
               type="text"
               value={inputMessage}
@@ -230,12 +230,12 @@ export const AiAssistant: React.FC = () => {
               }}
               disabled={isLoading}
               placeholder="Ask anything (e.g. licensing fee, L-track prep test, medical forms...)"
-              className="flex-1 bg-[#060913] border border-white/10 rounded-2xl px-4 py-3 text-xs sm:text-sm text-white focus:outline-none focus:border-cyan-400 disabled:opacity-50"
+              className="flex-1 bg-white border border-neutral-300 rounded-2xl px-4 py-3 text-xs sm:text-sm text-neutral-800 focus:outline-none focus:border-orange-500 disabled:opacity-50"
             />
             <button
               onClick={() => handleSendMessage(inputMessage)}
               disabled={isLoading || !inputMessage.trim()}
-              className="px-5 rounded-2xl bg-gradient-to-r from-cyan-500 to-rose-500 text-white font-bold flex items-center justify-center cursor-pointer transition-all hover:scale-105 active:scale-95 disabled:opacity-40 shrink-0"
+              className="px-5 rounded-2xl bg-neutral-600 hover:bg-neutral-700 text-white font-bold flex items-center justify-center cursor-pointer transition-all hover:scale-105 active:scale-95 disabled:opacity-40 shrink-0"
               aria-label="Send"
             >
               <Send className="w-4 h-4" />

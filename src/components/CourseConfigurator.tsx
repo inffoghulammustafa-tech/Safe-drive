@@ -164,33 +164,33 @@ export const CourseConfigurator: React.FC<CourseConfiguratorProps> = ({
   };
 
   return (
-    <section id="configurator" className="py-24 relative bg-[#060913]">
-      <div className="absolute top-1/2 left-0 w-80 h-80 bg-rose-500/5 rounded-full blur-[140px] pointer-events-none"></div>
+    <section id="configurator" className="py-24 relative bg-white">
+      <div className="absolute top-1/2 left-0 w-80 h-80 bg-orange-500/5 rounded-full blur-[140px] pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Title */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-cyan-400 font-extrabold tracking-widest text-xs uppercase">Interactive Tool</span>
-          <h2 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-white via-neutral-100 to-gray-400 bg-clip-text text-transparent mt-2 mb-4">
+          <span className="text-orange-600 font-extrabold tracking-widest text-xs uppercase">Interactive Tool</span>
+          <h2 className="text-3xl sm:text-4xl font-black text-neutral-950 mt-2 mb-4">
             Custom Fee Estimator & Slot Booking
           </h2>
-          <p className="text-gray-400 text-sm sm:text-base">
+          <p className="text-neutral-600 text-sm sm:text-base">
             Select your preferred training configurations below to dynamically construct your custom school catalog and schedule. Zero hidden costs.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* LEFT PANEL - CONFIGURATION CONTROLS */}
-          <div className="lg:col-span-8 bg-[#0b1122]/50 rounded-3xl border border-white/[0.06] p-6 sm:p-8 backdrop-blur-md">
-            <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
-              <Calculator className="w-5 h-5 text-cyan-400" />
+          <div className="lg:col-span-8 bg-white rounded-3xl border border-neutral-200 p-6 sm:p-8 shadow-sm">
+            <h3 className="text-xl font-bold text-neutral-900 mb-6 flex items-center gap-2">
+              <Calculator className="w-5 h-5 text-orange-600" />
               Configure Your Training Specifications
             </h3>
 
             <div className="space-y-6">
               {/* Option 1: Choose Driving Program */}
               <div>
-                <label className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2.5">
+                <label className="block text-xs font-bold text-neutral-600 uppercase tracking-wider mb-2.5">
                   1. Select Driving Program
                 </label>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -200,16 +200,16 @@ export const CourseConfigurator: React.FC<CourseConfiguratorProps> = ({
                       onClick={() => setProgramId(prog.id)}
                       className={`p-4 rounded-xl text-left border cursor-pointer smooth-transition transition-all ${
                         programId === prog.id
-                          ? "bg-cyan-500/10 border-cyan-400 ring-1 ring-cyan-400/50"
-                          : "bg-white/[0.01] border-white/5 hover:border-white/20 hover:bg-white/[0.03]"
+                          ? "bg-orange-500/10 border-orange-500 ring-1 ring-orange-500/50"
+                          : "bg-neutral-50/50 border-neutral-200 hover:border-neutral-350 hover:bg-neutral-100/50"
                       }`}
                     >
                       <div className="flex items-center justify-between">
-                        <span className="text-sm font-bold text-white">{prog.name}</span>
-                        {programId === prog.id && <span className="w-2 h-2 rounded-full bg-cyan-400"></span>}
+                        <span className="text-sm font-bold text-neutral-900">{prog.name}</span>
+                        {programId === prog.id && <span className="w-2 h-2 rounded-full bg-orange-600"></span>}
                       </div>
-                      <span className="block text-[11px] text-gray-400 mt-1">{prog.duration}</span>
-                      <span className="block text-xs font-black text-cyan-300 mt-2">PKR {prog.basePrice.toLocaleString()}</span>
+                      <span className="block text-[11px] text-neutral-500 mt-1">{prog.duration}</span>
+                      <span className="block text-xs font-black text-orange-600 mt-2">PKR {prog.basePrice.toLocaleString()}</span>
                     </button>
                   ))}
                 </div>
@@ -219,17 +219,17 @@ export const CourseConfigurator: React.FC<CourseConfiguratorProps> = ({
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                 {/* Option 2: Coach Preference */}
                 <div>
-                  <label className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2.5">
+                  <label className="block text-xs font-bold text-neutral-600 uppercase tracking-wider mb-2.5">
                     2. Coach Division
                   </label>
-                  <div className="grid grid-cols-2 gap-2 bg-[#060913] p-1 rounded-xl border border-white/5">
+                  <div className="grid grid-cols-2 gap-2 bg-neutral-100 p-1 rounded-xl border border-neutral-200">
                     <button
                       type="button"
                       onClick={() => setInstructorGender("male")}
                       className={`py-2 px-3 rounded-lg text-xs font-semibold cursor-pointer ${
                         instructorGender === "male"
-                          ? "bg-white/10 text-white"
-                          : "text-gray-400 hover:text-white"
+                          ? "bg-white text-neutral-900 border border-neutral-200/80 shadow-sm"
+                          : "text-neutral-600 hover:text-neutral-900"
                       }`}
                     >
                       Male Instructor
@@ -239,12 +239,12 @@ export const CourseConfigurator: React.FC<CourseConfiguratorProps> = ({
                       onClick={() => setInstructorGender("female")}
                       className={`py-2 px-3 rounded-lg text-xs font-semibold cursor-pointer flex items-center justify-center gap-1.5 ${
                         instructorGender === "female"
-                          ? "bg-gradient-to-r from-rose-500/25 to-rose-600/30 text-rose-300 border border-rose-500/30"
-                          : "text-gray-400 hover:text-white"
+                          ? "bg-orange-500/15 text-orange-700 border border-orange-500/30"
+                          : "text-neutral-600 hover:text-neutral-900"
                       }`}
                     >
                       Female Coach
-                      <span className="bg-rose-500/20 text-[9px] text-rose-300 px-1 py-0.5 rounded font-black scale-90">
+                      <span className="bg-orange-500/20 text-[9px] text-orange-700 px-1 py-0.5 rounded font-black scale-90">
                         +1.5K
                       </span>
                     </button>
@@ -253,15 +253,15 @@ export const CourseConfigurator: React.FC<CourseConfiguratorProps> = ({
 
                 {/* Option 3: Transmission */}
                 <div>
-                  <label className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2.5">
+                  <label className="block text-xs font-bold text-neutral-600 uppercase tracking-wider mb-2.5">
                     3. Gear Transmission
                   </label>
-                  <div className="grid grid-cols-2 gap-2 bg-[#060913] p-1 rounded-xl border border-white/5">
+                  <div className="grid grid-cols-2 gap-2 bg-neutral-100 p-1 rounded-xl border border-neutral-200">
                     <button
                       type="button"
                       onClick={() => setTransmission("manual")}
                       className={`py-2 px-3 rounded-lg text-xs font-semibold cursor-pointer ${
-                        transmission === "manual" ? "bg-white/10 text-white" : "text-gray-400 hover:text-white"
+                        transmission === "manual" ? "bg-white text-neutral-900 border border-neutral-200/80 shadow-sm" : "text-neutral-600 hover:text-neutral-900"
                       }`}
                     >
                       Manual Gear
@@ -271,12 +271,12 @@ export const CourseConfigurator: React.FC<CourseConfiguratorProps> = ({
                       onClick={() => setTransmission("automatic")}
                       className={`py-2 px-3 rounded-lg text-xs font-semibold cursor-pointer flex items-center justify-center gap-1 ${
                         transmission === "automatic"
-                          ? "bg-cyan-500/20 text-cyan-300 border border-cyan-500/20"
-                          : "text-gray-400 hover:text-white"
+                          ? "bg-[#4a5568] text-white"
+                          : "text-neutral-600 hover:text-neutral-900"
                       }`}
                     >
                       Automatic
-                      <span className="bg-cyan-500/20 text-[9px] text-cyan-300 px-1 py-0.5 rounded font-black scale-90">
+                      <span className="bg-neutral-850/20 text-[9px] text-white px-1 py-0.5 rounded font-black scale-90">
                         +1.2K
                       </span>
                     </button>
@@ -285,21 +285,21 @@ export const CourseConfigurator: React.FC<CourseConfiguratorProps> = ({
 
                 {/* Option 4: Pickup Location */}
                 <div>
-                  <label className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2.5">
+                  <label className="block text-xs font-bold text-neutral-600 uppercase tracking-wider mb-2.5">
                     4. Pick & Drop Hub
                   </label>
-                  <div className="grid grid-cols-2 gap-2 bg-[#060913] p-1 rounded-xl border border-white/5">
+                  <div className="grid grid-cols-2 gap-2 bg-neutral-100 p-1 rounded-xl border border-neutral-200">
                     <button
                       type="button"
                       onClick={() => setPickup("doorstep")}
                       className={`py-2 px-3 rounded-lg text-xs font-semibold cursor-pointer flex items-center justify-center gap-1 ${
                         pickup === "doorstep"
-                          ? "bg-teal-500/20 text-teal-300 border border-teal-500/20"
-                          : "text-gray-400 hover:text-white"
+                          ? "bg-[#4a5568] text-white"
+                          : "text-neutral-600 hover:text-neutral-900"
                       }`}
                     >
                       Doorstep
-                      <span className="bg-teal-500/20 text-[9px] text-teal-300 px-1 py-0.5 rounded font-black scale-90">
+                      <span className="bg-neutral-850/20 text-[9px] text-white px-1 py-0.5 rounded font-black scale-90">
                         +2.5K
                       </span>
                     </button>
@@ -307,7 +307,7 @@ export const CourseConfigurator: React.FC<CourseConfiguratorProps> = ({
                       type="button"
                       onClick={() => setPickup("hub")}
                       className={`py-2 px-3 rounded-lg text-xs font-semibold cursor-pointer ${
-                        pickup === "hub" ? "bg-white/10 text-white" : "text-gray-400 hover:text-white"
+                        pickup === "hub" ? "bg-white text-neutral-900 border border-neutral-200/80 shadow-sm" : "text-neutral-600 hover:text-neutral-900"
                       }`}
                     >
                       Meet at Hub
@@ -318,7 +318,7 @@ export const CourseConfigurator: React.FC<CourseConfiguratorProps> = ({
 
               {/* Option 5: Timing Slots */}
               <div>
-                <label className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2.5">
+                <label className="block text-xs font-bold text-neutral-600 uppercase tracking-wider mb-2.5">
                   5. Timing Slot Convenience
                 </label>
                 <div className="grid grid-cols-3 gap-3">
@@ -332,8 +332,8 @@ export const CourseConfigurator: React.FC<CourseConfiguratorProps> = ({
                       onClick={() => setTiming(slot.id as any)}
                       className={`p-3 rounded-xl text-center border cursor-pointer smooth-transition ${
                         timing === slot.id
-                          ? "bg-cyan-500/10 border-cyan-400 text-white"
-                          : "bg-white/[0.01] border-white/5 text-gray-400 hover:border-white/15 hover:text-white"
+                          ? "bg-orange-500/10 border-orange-500 text-orange-700 font-bold"
+                          : "bg-neutral-50/50 border-neutral-200 text-neutral-700 hover:border-neutral-350 hover:bg-neutral-100"
                       }`}
                     >
                       <span className="block text-xs font-bold">{slot.label}</span>
@@ -343,64 +343,65 @@ export const CourseConfigurator: React.FC<CourseConfiguratorProps> = ({
                 </div>
               </div>
 
-              <div className="w-full h-px bg-white/[0.06] my-6"></div>
+              <div className="w-full h-px bg-neutral-200 my-6"></div>
 
               {/* Enrolment Form Body */}
               <form onSubmit={handleSubmitBooking} className="space-y-4">
-                <h4 className="text-sm font-semibold text-white uppercase tracking-wide">
+                <h4 className="text-sm font-bold text-neutral-900 uppercase tracking-wide">
                   Student Registration Information
                 </h4>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-[11px] text-gray-400 mb-1">FullName / Aapka Naam *</label>
+                    <label className="block text-[11px] text-neutral-700 font-bold mb-1">FullName / Aapka Naam *</label>
                     <input
                       type="text"
                       required
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       placeholder="e.g. Ghulam Mustafa"
-                      className="w-full bg-[#060913] border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-400"
+                      className="w-full bg-neutral-50 border border-neutral-300 rounded-xl px-4 py-3 text-sm text-neutral-900 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500/20"
                     />
                   </div>
                   <div>
-                    <label className="block text-[11px] text-gray-400 mb-1">Mobile / Whatsapp Number *</label>
+                    <label className="block text-[11px] text-neutral-700 font-bold mb-1">Mobile / Whatsapp Number *</label>
                     <input
                       type="tel"
                       required
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
                       placeholder="e.g. 0300-1234567"
-                      className="w-full bg-[#060913] border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-400"
+                      className="w-full bg-neutral-50 border border-neutral-300 rounded-xl px-4 py-3 text-sm text-neutral-900 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500/20"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-[11px] text-gray-400 mb-1">Email Address (Optional)</label>
+                  <label className="block text-[11px] text-neutral-700 font-bold mb-1">Email Address (Optional)</label>
                   <input
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="e.g. name@example.com"
-                    className="w-full bg-[#060913] border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-400"
+                    className="w-full bg-neutral-50 border border-neutral-300 rounded-xl px-4 py-3 text-sm text-neutral-900 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500/20"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-[11px] text-gray-400 mb-1">Pickup Landmark or Requirements (Optional)</label>
+                  <label className="block text-[11px] text-neutral-700 font-bold mb-1">Pickup Landmark or Requirements (Optional)</label>
                   <textarea
                     rows={2}
                     value={additionalNotes}
                     onChange={(e) => setAdditionalNotes(e.target.value)}
                     placeholder="e.g. Near Susan Road Jamil Sweets, Kohinoor Town."
-                    className="w-full bg-[#060913] border border-white/10 rounded-xl p-4 text-sm text-white focus:outline-none focus:border-cyan-400"
+                    className="w-full bg-neutral-50 border border-neutral-300 rounded-xl p-4 text-sm text-neutral-900 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500/20"
                   ></textarea>
                 </div>
 
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full mt-4 py-4 rounded-xl bg-gradient-to-r from-cyan-500 via-teal-400 to-rose-500 hover:from-cyan-400 hover:to-rose-450 text-white font-extrabold text-sm shadow-xl shadow-cyan-500/10 hover:shadow-rose-500/20 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+                  className="w-full mt-4 py-4 rounded-xl text-white font-extrabold text-sm shadow-xl shadow-neutral-200 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+                  style={{ backgroundColor: "#525252" }}
                 >
                   {isSubmitting ? (
                     <>
@@ -419,93 +420,93 @@ export const CourseConfigurator: React.FC<CourseConfiguratorProps> = ({
 
           {/* RIGHT PANEL - LIVE INVOICE RECEIPT */}
           <div className="lg:col-span-4 space-y-6">
-            <div className="bg-gradient-to-b from-[#111933] to-[#0a0f1d] rounded-3xl border border-white/[0.08] p-6 text-gray-100 shadow-2xl relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-24 h-24 bg-cyan-400/5 rounded-full blur-2xl"></div>
+            <div className="bg-neutral-50 rounded-3xl border border-neutral-200 p-6 text-neutral-800 shadow-md relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-24 h-24 bg-orange-400/5 rounded-full blur-2xl"></div>
               
               {/* Receipt Heading */}
-              <div className="border-b border-white/10 pb-4 mb-4 flex items-center justify-between">
+              <div className="border-b border-neutral-200 pb-4 mb-4 flex items-center justify-between">
                 <div>
-                  <h4 className="text-sm font-bold text-white uppercase tracking-wider">Estimated Invoice</h4>
-                  <p className="text-[10px] text-gray-400">GoDriveify Faisalabad</p>
+                  <h4 className="text-sm font-bold text-neutral-900 uppercase tracking-wider">Estimated Invoice</h4>
+                  <p className="text-[10px] text-neutral-500">GoDriveify Faisalabad</p>
                 </div>
-                <CreditCard className="w-5 h-5 text-rose-400" />
+                <CreditCard className="w-5 h-5 text-orange-600" />
               </div>
 
               {/* Course Selection Summary */}
               <div className="space-y-4 text-xs">
                 <div>
-                  <span className="block text-[10px] text-gray-400 uppercase font-semibold">Selected Pack</span>
-                  <p className="text-white font-bold">{activeProgram.name}</p>
-                  <p className="text-[10px] text-teal-400">{activeProgram.duration}</p>
+                  <span className="block text-[10px] text-neutral-500 uppercase font-bold">Selected Pack</span>
+                  <p className="text-neutral-900 font-bold">{activeProgram.name}</p>
+                  <p className="text-[10px] text-orange-600">{activeProgram.duration}</p>
                 </div>
 
-                <div className="grid grid-cols-2 gap-3 border-t border-white/[0.04] pt-3">
+                <div className="grid grid-cols-2 gap-3 border-t border-neutral-200 pt-3">
                   <div>
-                    <span className="block text-[10px] text-gray-400 uppercase font-semibold">Transmission</span>
-                    <p className="text-white font-medium capitalize">{transmission}</p>
+                    <span className="block text-[10px] text-neutral-500 uppercase font-bold">Transmission</span>
+                    <p className="text-neutral-950 font-bold capitalize">{transmission}</p>
                   </div>
                   <div>
-                    <span className="block text-[10px] text-gray-400 uppercase font-semibold">Coach Assigned</span>
-                    <p className="text-white font-medium capitalize">{instructorGender} Instructor</p>
+                    <span className="block text-[10px] text-neutral-500 uppercase font-bold">Coach Assigned</span>
+                    <p className="text-neutral-950 font-bold capitalize">{instructorGender} Instructor</p>
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-3 border-t border-white/[0.04] pt-3">
+                <div className="grid grid-cols-2 gap-3 border-t border-neutral-200 pt-3">
                   <div>
-                    <span className="block text-[10px] text-gray-400 uppercase font-semibold">Pickup Hub</span>
-                    <p className="text-white font-medium capitalize">
+                    <span className="block text-[10px] text-neutral-500 uppercase font-bold">Pickup Hub</span>
+                    <p className="text-neutral-950 font-bold capitalize">
                       {pickup === "doorstep" ? "Doorstep Pick" : "Fsd Training Hub"}
                     </p>
                   </div>
                   <div>
-                    <span className="block text-[10px] text-gray-400 uppercase font-semibold">Timings Selected</span>
-                    <p className="text-white font-medium capitalize">{timing} Shift</p>
+                    <span className="block text-[10px] text-neutral-500 uppercase font-bold">Timings Selected</span>
+                    <p className="text-neutral-950 font-bold capitalize">{timing} Shift</p>
                   </div>
                 </div>
 
                 {/* Pricing Details */}
-                <div className="border-t border-white/10 pt-4 mt-6 space-y-2">
-                  <div className="flex justify-between text-gray-400">
+                <div className="border-t border-neutral-200 pt-4 mt-6 space-y-2">
+                  <div className="flex justify-between text-neutral-600">
                     <span>Base Course Fee:</span>
-                    <span>PKR {baseFee.toLocaleString()}</span>
+                    <span className="font-semibold text-neutral-900">PKR {baseFee.toLocaleString()}</span>
                   </div>
 
                   {femaleCoachCharge > 0 && (
-                    <div className="flex justify-between text-rose-300">
+                    <div className="flex justify-between text-orange-600">
                       <span>Female Instructor Premium:</span>
-                      <span>+PKR {femaleCoachCharge.toLocaleString()}</span>
+                      <span className="font-semibold">+PKR {femaleCoachCharge.toLocaleString()}</span>
                     </div>
                   )}
 
                   {automaticTransCharge > 0 && (
-                    <div className="flex justify-between text-cyan-300">
+                    <div className="flex justify-between text-neutral-700">
                       <span>Automatic Gear Adjustment:</span>
-                      <span>+PKR {automaticTransCharge.toLocaleString()}</span>
+                      <span className="font-semibold">+PKR {automaticTransCharge.toLocaleString()}</span>
                     </div>
                   )}
 
                   {doorstepPickupCharge > 0 && (
-                    <div className="flex justify-between text-teal-300">
+                    <div className="flex justify-between text-neutral-700">
                       <span>Doorstep Pick &amp; Drop:</span>
-                      <span>+PKR {doorstepPickupCharge.toLocaleString()}</span>
+                      <span className="font-semibold">+PKR {doorstepPickupCharge.toLocaleString()}</span>
                     </div>
                   )}
 
-                  <div className="border-t border-white/10 pt-3 mt-3 flex justify-between text-base font-black text-white">
+                  <div className="border-t border-neutral-200 pt-3 mt-3 flex justify-between text-base font-black text-neutral-950">
                     <span>Estimated Total:</span>
-                    <span className="text-cyan-400">PKR {totalFee.toLocaleString()}</span>
+                    <span className="text-orange-600">PKR {totalFee.toLocaleString()}</span>
                   </div>
                 </div>
               </div>
 
               {/* Gurantees */}
-              <div className="mt-6 p-4 bg-white/[0.02] rounded-xl border border-white/5 space-y-2.5">
-                <div className="flex items-center gap-1.5 text-[10px] text-gray-400">
-                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+              <div className="mt-6 p-4 bg-white rounded-xl border border-neutral-200 space-y-2.5 shadow-sm">
+                <div className="flex items-center gap-1.5 text-[10px] text-neutral-600">
+                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
                   <span>Dual control brakes for direct security bounds</span>
                 </div>
-                <div className="flex items-center gap-1.5 text-[10px] text-gray-400">
-                  <UserCheck className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                <div className="flex items-center gap-1.5 text-[10px] text-neutral-600">
+                  <UserCheck className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
                   <span>Licensed male & female instructors only</span>
                 </div>
               </div>

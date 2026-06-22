@@ -14,11 +14,12 @@ export default function App() {
   const [activeSection, setActiveSection] = useState("home");
   const [selectedProgramId, setSelectedProgramId] = useState("");
   const [bookingTrigger, setBookingTrigger] = useState(0);
+  const [hubTab, setHubTab] = useState("learn"); // "learn" | "rent" | "requests"
 
   // Scroll smoothly to any specific target segment
   const handleNavClick = (sectionId: string) => {
     setActiveSection(sectionId);
-    if (sectionId === "home") {
+    if (sectionId === "home" || sectionId === "logo") {
       window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
       const element = document.getElementById(sectionId);
@@ -43,28 +44,28 @@ export default function App() {
   };
 
   return (
-    <div className="bg-[#060913] text-gray-100 font-sans min-h-screen selection:bg-cyan-500/30 selection:text-white">
+    <div className="bg-white text-neutral-900 font-sans min-h-screen selection:bg-orange-500/30 selection:text-neutral-900">
       {/* Dynamic Floating Glow Element */}
-      <div className="fixed top-0 left-0 w-full h-[500px] bg-gradient-to-b from-cyan-500/[0.04] to-transparent pointer-events-none z-[1]" />
+      <div className="fixed top-0 left-0 w-full h-[500px] bg-gradient-to-b from-orange-500/[0.04] to-transparent pointer-events-none z-[1]" />
       
       {/* 1. Header Navigation */}
-      <Navbar onNavClick={handleNavClick} activeSection={activeSection} />
+      <Navbar onNavClick={handleNavClick} activeSection={activeSection} onHubTabChange={setHubTab} />
 
       {/* 2. Main Content Container */}
       <main className="relative z-10">
         
         {/* SECTION: HOME (Hero & stats dashboard) */}
-        <div id="home">
-          <Hero onActionClick={handleNavClick} />
+        <div id="home" className="relative z-0">
+          <Hero onActionClick={handleNavClick} activeTab={hubTab} setActiveTab={setHubTab} />
         </div>
 
         {/* SECTION: PROGRAMS (Course catalog selections) */}
-        <div id="programs">
+        <div id="programs" className="relative z-10 bg-white">
           <Programs onSelectProgram={handleSelectProgram} />
         </div>
 
         {/* SECTION: CALCULATOR CONFIGURATOR (Cost estimate & registration bookings slotting) */}
-        <div id="configurator">
+        <div id="configurator" className="relative z-10 bg-white border-t border-neutral-100">
           <CourseConfigurator
             selectedProgramId={selectedProgramId}
             onBookingSuccess={handleBookingSuccess}
@@ -72,17 +73,17 @@ export default function App() {
         </div>
 
         {/* SECTION: EXAM SIGN QUIZ (Traffic signs interactive theory test practice) */}
-        <div id="quiz">
+        <div id="quiz" className="relative z-10 bg-white border-t border-neutral-100">
           <SignQuiz />
         </div>
 
         {/* SECTION: AI ROAD ADVISOR CHAT (Knowledge query proxy desk) */}
-        <div id="ai-advisor">
+        <div id="ai-advisor" className="relative z-10 bg-white border-t border-neutral-100">
           <AiAssistant />
         </div>
 
         {/* SECTION: MY BOOKINGS (Schedule list syllabus checklist records logs) */}
-        <div id="bookings">
+        <div id="bookings" className="relative z-10 bg-white border-t border-neutral-100">
           <MyBookings renewTrigger={bookingTrigger} />
         </div>
 
@@ -92,7 +93,7 @@ export default function App() {
       <div className="fixed bottom-6 right-6 z-40 hidden sm:block">
         <button
           onClick={() => handleNavClick("ai-advisor")}
-          className="p-3.5 rounded-full bg-gradient-to-r from-cyan-500 to-rose-500 text-white shadow-2xl hover:shadow-cyan-400/20 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center cursor-pointer group"
+          className="p-3.5 rounded-full bg-neutral-600 text-white shadow-2xl hover:bg-neutral-700 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center cursor-pointer group"
           title="Ask AI Advisor"
         >
           <HelpCircle className="w-5 h-5" />

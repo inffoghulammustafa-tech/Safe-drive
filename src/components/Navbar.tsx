@@ -6,9 +6,10 @@ import { RentCarModal, SaleCarModal, BlogUpdatesModal } from "./HeaderModals";
 interface NavbarProps {
   onNavClick: (section: string) => void;
   activeSection: string;
+  onHubTabChange?: (tab: string) => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ onNavClick, activeSection }) => {
+export const Navbar: React.FC<NavbarProps> = ({ onNavClick, activeSection, onHubTabChange }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [rentOpen, setRentOpen] = useState(false);
   const [saleOpen, setSaleOpen] = useState(false);
@@ -45,9 +46,27 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavClick, activeSection }) => 
       const targetId = getSectionId(item.label);
       onNavClick(targetId);
     } else if (item.type === "modal_rent") {
-      setRentOpen(true);
+      if (onHubTabChange) {
+        onHubTabChange("rent");
+        onNavClick("home");
+        setTimeout(() => {
+          const el = document.getElementById("godriveify-hub");
+          if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
+        }, 100);
+      } else {
+        setRentOpen(true);
+      }
     } else if (item.type === "modal_sale") {
-      setSaleOpen(true);
+      if (onHubTabChange) {
+        onHubTabChange("requests");
+        onNavClick("home");
+        setTimeout(() => {
+          const el = document.getElementById("godriveify-hub");
+          if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
+        }, 100);
+      } else {
+        setSaleOpen(true);
+      }
     }
   };
 
@@ -67,7 +86,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavClick, activeSection }) => 
         {/* Brand Logo & Title according to image */}
         <button
           onClick={() => {
-            onNavClick("home");
+            onNavClick("logo");
             setMobileMenuOpen(false);
           }}
           className="cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#ff6a00]/20 rounded-xl"
@@ -104,7 +123,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavClick, activeSection }) => 
           {/* BLOG UPDATES Button (Navy blue pill with book icon) */}
           <button
             onClick={() => setBlogOpen(true)}
-            className="px-5 py-3 rounded-2xl bg-[#0a2561] hover:bg-[#0c2f7c] text-white font-extrabold text-[12px] tracking-wider uppercase shadow-md hover:shadow-[#0a2561]/25 active:scale-95 transition-all cursor-pointer flex items-center gap-2"
+            className="px-5 py-3 rounded-2xl bg-neutral-600 hover:bg-neutral-700 text-white font-extrabold text-[12px] tracking-wider uppercase shadow-md hover:shadow-neutral-600/25 active:scale-95 transition-all cursor-pointer flex items-center gap-2"
           >
             <BookOpen className="w-4 h-4 shrink-0" />
             <span>BLOG UPDATES</span>
@@ -113,7 +132,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavClick, activeSection }) => 
           {/* APPLY NOW Button (Orange pill with plus icon) */}
           <button
             onClick={() => onNavClick("configurator")}
-            className="px-5 py-3 rounded-2xl bg-[#ff6a00] hover:bg-[#ff7b1c] text-white font-extrabold text-[12px] tracking-wider uppercase shadow-md hover:shadow-[#ff6a00]/25 active:scale-95 transition-all cursor-pointer flex items-center gap-1.5"
+            className="px-5 py-3 rounded-2xl bg-neutral-800 hover:bg-neutral-900 text-white font-extrabold text-[12px] tracking-wider uppercase shadow-md hover:shadow-neutral-800/25 active:scale-95 transition-all cursor-pointer flex items-center gap-1.5"
           >
             <Plus className="w-4 h-4 stroke-[3px] shrink-0" />
             <span>APPLY NOW</span>
@@ -156,7 +175,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavClick, activeSection }) => 
                 setBlogOpen(true);
                 setMobileMenuOpen(false);
               }}
-              className="w-full text-center px-4 py-3 rounded-xl bg-[#0a2561] text-white font-extrabold text-xs uppercase tracking-wider flex items-center justify-center gap-2"
+              className="w-full text-center px-4 py-3 rounded-xl bg-neutral-600 text-white font-extrabold text-xs uppercase tracking-wider flex items-center justify-center gap-2"
             >
               <BookOpen className="w-4 h-4" />
               BLOG UPDATES
@@ -166,7 +185,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavClick, activeSection }) => 
                 onNavClick("configurator");
                 setMobileMenuOpen(false);
               }}
-              className="w-full text-[#ff6a00] border border-[#ff6a00] hover:bg-[#ff6a00]/5 text-center px-4 py-3 rounded-xl font-extrabold text-xs uppercase tracking-wider flex items-center justify-center gap-1.5"
+              className="w-full text-neutral-800 border border-neutral-300 hover:bg-neutral-50 text-center px-4 py-3 rounded-xl font-extrabold text-xs uppercase tracking-wider flex items-center justify-center gap-1.5"
             >
               <Plus className="w-4 h-4 stroke-[3px]" />
               APPLY NOW

@@ -35,19 +35,19 @@ export const RentCarModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm animate-fade-in">
-      <div className="bg-[#0b1122] rounded-3xl border border-white/10 max-w-2xl w-full text-slate-100 shadow-2xl overflow-hidden animate-scale-up">
+      <div className="bg-white rounded-3xl border border-neutral-200 max-w-2xl w-full text-neutral-800 shadow-2xl overflow-hidden animate-scale-up">
         {/* Header */}
-        <div className="px-6 py-5 bg-white/[0.02] border-b border-white/[0.06] flex items-center justify-between">
+        <div className="px-6 py-5 bg-neutral-50 border-b border-neutral-200 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Car className="w-5 h-5 text-[#ff6a00]" />
+            <Car className="w-5 h-5 text-orange-650" />
             <div>
-              <h3 className="font-bold text-lg text-white">GoDriveify Rent-A-Car</h3>
-              <p className="text-xs text-gray-400">Specially configured training/daily travel cars in Faisalabad</p>
+              <h3 className="font-extrabold text-lg text-neutral-900">GoDriveify Rent-A-Car</h3>
+              <p className="text-xs text-neutral-500">Specially configured training/daily travel cars in Faisalabad</p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-1 px-2.5 rounded-lg bg-white/5 text-gray-400 hover:text-white"
+            className="p-1 px-2.5 rounded-lg bg-neutral-100 text-neutral-500 hover:text-neutral-900 font-bold"
             aria-label="Close"
           >
             ✕
@@ -56,30 +56,30 @@ export const RentCarModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
 
         {/* Content */}
         <div className="p-6 overflow-y-auto max-h-[70vh] space-y-4">
-          <p className="text-xs text-gray-300">
+          <p className="text-xs text-neutral-600">
             Learn with confidence or ride in peace. We offer premium dual-brake modified cars for student practice, or normal fuel-efficient hatchbacks/sedans for domestic rent with/without drivers.
           </p>
 
           <div className="grid grid-cols-1 gap-4">
             {rentCars.map((car, idx) => (
-              <div key={idx} className="p-4 bg-white/[0.02] rounded-2xl border border-white/5 hover:border-[#ff6a00]/30 transition-all">
+              <div key={idx} className="p-4 bg-neutral-50 rounded-2xl border border-neutral-200 hover:border-orange-500/40 transition-all">
                 <div className="flex items-start justify-between gap-4">
                   <div>
-                    <span className="px-2 py-0.5 rounded text-[9px] bg-[#ff6a00]/15 text-[#ff6a00] font-black uppercase tracking-wider">
+                    <span className="px-2 py-0.5 rounded text-[9px] bg-orange-100 text-orange-850 font-black uppercase tracking-wider">
                       {car.badge}
                     </span>
-                    <h4 className="font-bold text-sm text-white mt-1">{car.name}</h4>
-                    <p className="text-[11px] text-gray-400 font-mono mt-0.5">{car.specs}</p>
+                    <h4 className="font-bold text-sm text-neutral-900 mt-1">{car.name}</h4>
+                    <p className="text-[11px] text-neutral-500 font-mono mt-0.5">{car.specs}</p>
                   </div>
                   <div className="text-right">
-                    <span className="block text-xs text-gray-400">Daily Rent</span>
-                    <span className="font-black text-sm text-[#ff6a00]">{car.rate}</span>
+                    <span className="block text-xs text-neutral-500">Daily Rent</span>
+                    <span className="font-black text-sm text-orange-600">{car.rate}</span>
                   </div>
                 </div>
 
-                <div className="flex flex-wrap gap-2 mt-3 pt-3 border-t border-white/[0.04]">
+                <div className="flex flex-wrap gap-2 mt-3 pt-3 border-t border-neutral-200">
                   {car.features.map((feat, fidx) => (
-                    <span key={fidx} className="text-[10px] bg-white/[0.02] text-gray-300 px-2 py-0.5 rounded border border-white/5">
+                    <span key={fidx} className="text-[10px] bg-white text-neutral-600 px-2 py-0.5 rounded border border-neutral-200">
                       ✓ {feat}
                     </span>
                   ))}
@@ -90,14 +90,14 @@ export const RentCarModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
         </div>
 
         {/* Footer */}
-        <div className="px-6 py-4 bg-white/[0.02] border-t border-white/[0.05] flex items-center justify-between text-xs text-gray-400">
+        <div className="px-6 py-4 bg-neutral-50 border-t border-neutral-200 flex items-center justify-between text-xs text-neutral-600">
           <span>Need a driver too? Support available.</span>
           <button
             onClick={() => {
               alert("Shukriya! Our Rent-A-Car coordinator will contact you on your registered WhatsApp!");
               onClose();
             }}
-            className="px-4 py-2 rounded-xl bg-gradient-to-r from-orange-500 to-rose-500 text-white font-bold hover:scale-105 active:scale-95 transition-all text-xs"
+            className="px-4 py-2 rounded-xl bg-neutral-600 hover:bg-neutral-700 text-white font-bold hover:scale-105 active:scale-95 transition-all text-xs cursor-pointer"
           >
             Inquire on Rental Car
           </button>
@@ -129,19 +129,19 @@ export const SaleCarModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm animate-fade-in">
-      <div className="bg-[#0b1122] rounded-3xl border border-white/10 max-w-2xl w-full text-slate-100 shadow-2xl overflow-hidden animate-scale-up">
+      <div className="bg-white rounded-3xl border border-neutral-200 max-w-2xl w-full text-neutral-800 shadow-2xl overflow-hidden animate-scale-up">
         {/* Header */}
-        <div className="px-6 py-5 bg-white/[0.02] border-b border-white/[0.06] flex items-center justify-between">
+        <div className="px-6 py-5 bg-neutral-50 border-b border-neutral-200 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Sparkles className="w-5 h-5 text-amber-400" />
+            <Sparkles className="w-5 h-5 text-orange-600" />
             <div>
-              <h3 className="font-bold text-lg text-white">GoDriveify Verified Pre-Owned</h3>
-              <p className="text-xs text-gray-400">Inspected certified student-friendly cars for sale in Punjab</p>
+              <h3 className="font-extrabold text-lg text-neutral-900">GoDriveify Verified Pre-Owned</h3>
+              <p className="text-xs text-neutral-500">Inspected certified student-friendly cars for sale in Punjab</p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-1 px-2.5 rounded-lg bg-white/5 text-gray-400 hover:text-white"
+            className="p-1 px-2.5 rounded-lg bg-neutral-100 text-neutral-500 hover:text-neutral-905 font-bold"
             aria-label="Close"
           >
             ✕
@@ -150,33 +150,33 @@ export const SaleCarModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
 
         {/* Content */}
         <div className="p-6 overflow-y-auto max-h-[70vh] space-y-4">
-          <p className="text-xs text-gray-300">
+          <p className="text-xs text-neutral-600">
             Just cleared your DLIMS Punjab license exam? Skip high dealership margins! Invest in pre-vetted learner-approved vehicles featuring excellent visibility, simple transmissions, and minor driving scratch resilience.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {saleCars.map((car, idx) => (
-              <div key={idx} className="p-4 bg-white/[0.02] rounded-2xl border border-white/5 hover:border-amber-400/30 transition-all flex flex-col justify-between">
+              <div key={idx} className="p-4 bg-neutral-50 rounded-2xl border border-neutral-200 hover:border-orange-500/40 transition-all flex flex-col justify-between">
                 <div>
-                  <span className="px-2 py-0.5 rounded text-[9px] bg-amber-500/15 text-amber-400 font-extrabold uppercase tracking-wider">
+                  <span className="px-2 py-0.5 rounded text-[9px] bg-orange-100 text-orange-800 font-extrabold uppercase tracking-wider">
                     {car.badge}
                   </span>
-                  <h4 className="font-bold text-sm text-white mt-2">{car.name}</h4>
-                  <p className="text-[10px] text-gray-400">{car.year}</p>
-                  <p className="text-xs text-gray-300 mt-2 line-clamp-3 leading-relaxed">{car.desc}</p>
+                  <h4 className="font-bold text-sm text-neutral-900 mt-2">{car.name}</h4>
+                  <p className="text-[10px] text-neutral-500">{car.year}</p>
+                  <p className="text-xs text-neutral-600 mt-2 line-clamp-3 leading-relaxed">{car.desc}</p>
                 </div>
 
-                <div className="pt-4 border-t border-white/[0.04] mt-4 flex justify-between items-center">
+                <div className="pt-4 border-t border-neutral-200 mt-4 flex justify-between items-center">
                   <div>
-                    <span className="block text-[9px] text-gray-500 uppercase font-semibold">Total Price</span>
-                    <span className="font-black text-sm text-amber-400">{car.price}</span>
+                    <span className="block text-[9px] text-neutral-400 uppercase font-semibold">Total Price</span>
+                    <span className="font-black text-sm text-orange-605">{car.price}</span>
                   </div>
                   <button
                     onClick={() => {
                       alert(`Inquiry received for ${car.name}! Our pre-inspected vehicles department will reach out on your Whatsapp.`);
                       onClose();
                     }}
-                    className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 text-white font-bold text-[10px]"
+                    className="px-3 py-1.5 rounded-lg bg-neutral-200 border border-neutral-300 hover:bg-neutral-300 text-neutral-800 font-bold text-[10px]"
                   >
                     Details
                   </button>
@@ -187,11 +187,11 @@ export const SaleCarModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
         </div>
 
         {/* Footer */}
-        <div className="px-6 py-4 bg-white/[0.02] border-t border-white/[0.05] flex items-center justify-between text-xs text-gray-400">
+        <div className="px-6 py-4 bg-neutral-50 border-t border-neutral-200 flex items-center justify-between text-xs text-neutral-550">
           <span>All cars carry our 30-day powertrain warranty.</span>
           <button
             onClick={onClose}
-            className="text-xs font-bold text-gray-300 hover:text-white"
+            className="text-xs font-bold text-neutral-500 hover:text-neutral-900"
           >
             Cancel
           </button>
@@ -224,19 +224,19 @@ export const BlogUpdatesModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm animate-fade-in">
-      <div className="bg-[#0b1122] rounded-3xl border border-white/10 max-w-2xl w-full text-slate-100 shadow-2xl overflow-hidden animate-scale-up">
+      <div className="bg-white rounded-3xl border border-neutral-200 max-w-2xl w-full text-neutral-800 shadow-2xl overflow-hidden animate-scale-up">
         {/* Header */}
-        <div className="px-6 py-5 bg-white/[0.02] border-b border-white/[0.06] flex items-center justify-between">
+        <div className="px-6 py-5 bg-neutral-50 border-b border-neutral-200 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <BookOpen className="w-5 h-5 text-cyan-400" />
+            <BookOpen className="w-5 h-5 text-orange-600" />
             <div>
-              <h3 className="font-bold text-lg text-white font-sans uppercase tracking-wide">GoDriveify News &amp; Updates</h3>
-              <p className="text-xs text-gray-400">Official licensing news, traffic alerts, and school circulars</p>
+              <h3 className="font-extrabold text-lg text-neutral-900 font-sans uppercase tracking-wide">GoDriveify News &amp; Updates</h3>
+              <p className="text-xs text-neutral-505">Official licensing news, traffic alerts, and school circulars</p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-1 px-2.5 rounded-lg bg-white/5 text-gray-400 hover:text-white"
+            className="p-1 px-2.5 rounded-lg bg-neutral-105 text-neutral-500 hover:text-neutral-900 font-bold"
             aria-label="Close"
           >
             ✕
@@ -246,22 +246,22 @@ export const BlogUpdatesModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
         {/* Content */}
         <div className="p-6 overflow-y-auto max-h-[70vh] space-y-4">
           {logs.map((log, index) => (
-            <div key={index} className="p-4 bg-white/[0.01] rounded-2xl border border-white/5 hover:border-cyan-500/20 transition-all space-y-2">
+            <div key={index} className="p-4 bg-neutral-50 rounded-2xl border border-neutral-200 hover:border-orange-500/20 transition-all space-y-2">
               <div className="flex items-center justify-between gap-4">
-                <h4 className="font-bold text-sm text-white">{log.title}</h4>
-                <span className="text-[10px] text-gray-550 shrink-0 font-mono">{log.date}</span>
+                <h4 className="font-bold text-sm text-neutral-900">{log.title}</h4>
+                <span className="text-[10px] text-neutral-500 shrink-0 font-mono">{log.date}</span>
               </div>
-              <p className="text-xs text-gray-400 leading-relaxed font-sans">{log.desc}</p>
+              <p className="text-xs text-neutral-600 leading-relaxed font-sans">{log.desc}</p>
             </div>
           ))}
         </div>
 
         {/* Footer */}
-        <div className="px-6 py-4 bg-white/[0.02] border-t border-white/[0.05] flex items-center justify-between text-xs text-[#0a2561]">
-          <span className="text-gray-400 font-mono text-[10px]">Updates synced weekly with Punjab DLIMS portal</span>
+        <div className="px-6 py-4 bg-neutral-50 border-t border-neutral-200 flex items-center justify-between text-xs text-neutral-600">
+          <span className="text-neutral-400 font-mono text-[10px]">Updates synced weekly with Punjab DLIMS portal</span>
           <button
             onClick={onClose}
-            className="px-4 py-2 rounded-xl bg-[#0a2561] text-white font-bold hover:scale-105 active:scale-95 transition-all text-xs"
+            className="px-4 py-2 rounded-xl bg-neutral-600 hover:bg-neutral-700 text-white font-bold hover:scale-105 active:scale-95 transition-all text-xs cursor-pointer"
           >
             Acknowledge & Close
           </button>
