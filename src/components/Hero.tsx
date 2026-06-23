@@ -1,6 +1,37 @@
 import React, { useState } from "react";
 import { ShieldCheck, CalendarRange, MapPin, Award, Users, Star, Car, Phone, Sparkles, Bookmark, Search, FileText, Settings, Upload, Lock, ThumbsUp, Check, Info } from "lucide-react";
 import { RentCarModal, SaleCarModal } from "./HeaderModals";
+import { motion } from "motion/react";
+
+const TypewriterText = ({ text }: { text: string }) => {
+  const characters = text.split("");
+  return (
+    <motion.span
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-10%" }}
+      variants={{
+        hidden: { opacity: 0 },
+        visible: {
+          opacity: 1,
+          transition: { staggerChildren: 0.015, delayChildren: 0.2 }
+        }
+      }}
+    >
+      {characters.map((char, i) => (
+        <motion.span
+          key={i}
+          variants={{
+            hidden: { opacity: 0, display: "none" },
+            visible: { opacity: 1, display: "inline" }
+          }}
+        >
+          {char}
+        </motion.span>
+      ))}
+    </motion.span>
+  );
+};
 
 interface HeroProps {
   onActionClick: (section: string) => void;
@@ -179,9 +210,10 @@ export const Hero: React.FC<HeroProps> = ({ onActionClick, activeTab, setActiveT
   };
 
   return (
-    <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 flex flex-col items-center justify-center overflow-hidden bg-white">
-      {/* Background Video Element with loop & autoplay */}
-      <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none select-none z-0">
+    <div className="flex flex-col w-full min-h-screen">
+      <section className="relative pt-32 pb-16 md:pt-48 md:pb-20 flex flex-col items-center justify-center overflow-hidden bg-neutral-950">
+        {/* Background Video Element with loop & autoplay */}
+        <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none select-none z-0">
         <video
           autoPlay
           loop
@@ -205,9 +237,9 @@ export const Hero: React.FC<HeroProps> = ({ onActionClick, activeTab, setActiveT
           />
           Your browser does not support the video tag.
         </video>
-        {/* Soft elegant white overlay so the video is perfectly visible while keeping text legible */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-white/40 to-white z-[1]"></div>
-        <div className="absolute inset-0 bg-white/10 z-[2]"></div>
+        {/* Soft elegant overlay so the video is perfectly visible while keeping text legible */}
+        <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/80 via-neutral-950/60 to-neutral-950 z-[1]"></div>
+        <div className="absolute inset-0 bg-black/30 z-[2]"></div>
       </div>
 
       {/* Dynamic Warm Accent Glows */}
@@ -216,21 +248,21 @@ export const Hero: React.FC<HeroProps> = ({ onActionClick, activeTab, setActiveT
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-20 w-full">
         {/* Badge Indicator */}
-        <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide bg-black text-white shadow-md shadow-black/20 mb-6 uppercase">
+        <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide bg-neutral-900 border border-neutral-700 text-white shadow-md shadow-black/20 mb-6 uppercase">
           <MapPin className="w-3.5 h-3.5 text-orange-500" />
           Faisalabad's First Smart Digital Driving School
         </span>
 
         {/* Core Heading on White background with Black & Orange text colors */}
-        <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-neutral-950 mb-6 leading-tight">
+        <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-6 leading-tight">
           Master the Road <br />
-          <span className="bg-gradient-to-r from-orange-600 via-[#ff6a00] to-amber-600 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-orange-400 via-[#ff6a00] to-orange-500 bg-clip-text text-transparent">
             With Confidence
           </span>
         </h1>
 
         {/* Subtitle */}
-        <p className="max-w-2xl mx-auto text-base sm:text-lg text-neutral-700 mb-10 leading-relaxed font-medium">
+        <p className="max-w-2xl mx-auto text-base sm:text-lg text-neutral-300 mb-10 leading-relaxed font-medium">
           Learn from professional, certified instructors with years of road training expertise. We provide customized manual & automatic classes for safe, lifelong driving habits.
         </p>
 
@@ -238,14 +270,14 @@ export const Hero: React.FC<HeroProps> = ({ onActionClick, activeTab, setActiveT
         <div className="flex flex-col items-center justify-center gap-4 mb-20">
           <a
             href="tel:+923007663242"
-            className="w-full sm:w-auto px-12 py-4 rounded-full bg-neutral-800 hover:bg-neutral-900 text-white font-black tracking-widest text-lg flex items-center justify-center gap-3 shadow-xl shadow-neutral-300 hover:scale-[1.03] active:scale-95 transition-all duration-300 cursor-pointer border-none uppercase"
+            className="w-full sm:w-auto px-12 py-4 rounded-full bg-white hover:bg-neutral-200 text-neutral-950 font-black tracking-widest text-lg flex items-center justify-center gap-3 shadow-xl hover:scale-[1.03] active:scale-95 transition-all duration-300 cursor-pointer border-none uppercase"
           >
             CALL US NOW
-            <Phone className="w-5 h-5 text-white" />
+            <Phone className="w-5 h-5 text-neutral-950" />
           </a>
 
           {/* Rated indicator */}
-          <div className="flex flex-wrap items-center justify-center gap-2 text-sm sm:text-base text-neutral-600 mt-2">
+          <div className="flex flex-wrap items-center justify-center gap-2 text-sm sm:text-base text-neutral-400 mt-2">
             <div className="flex gap-0.5 text-orange-500">
               <Star className="w-4 h-4 fill-current animate-pulse" />
               <Star className="w-4 h-4 fill-current animate-pulse delay-75" />
@@ -253,14 +285,20 @@ export const Hero: React.FC<HeroProps> = ({ onActionClick, activeTab, setActiveT
               <Star className="w-4 h-4 fill-current animate-pulse delay-150" />
               <Star className="w-4 h-4 fill-current animate-pulse delay-200" />
             </div>
-            <span className="font-semibold text-neutral-700">
-              Rated <span className="text-orange-600 font-extrabold">4.9/5</span> by 380+ Confident Students
+            <span className="font-semibold text-neutral-300">
+              Rated <span className="text-orange-500 font-extrabold">4.9/5</span> by 380+ Confident Students
             </span>
           </div>
         </div>
 
+        {/* Removed godriveify-hub from here */}
+      </div>
+      </section>
+
+      {/* OVERLAPPING HUB SECTION */}
+      <div className="relative z-30 w-full px-4 sm:px-6 lg:px-8 -mt-20 sm:-mt-16">
         {/* GoDriveify Hub Capsule Section (replaces stats cards) */}
-        <div id="godriveify-hub" className="mt-14 sm:mt-16 bg-white border border-neutral-200 rounded-[32px] p-4 sm:py-5 sm:px-6 md:py-6 md:px-8 flex flex-col lg:flex-row items-center justify-between gap-6 shadow-md hover:shadow-lg transition-shadow duration-300 max-w-6xl mx-auto text-left relative z-25">
+        <div id="godriveify-hub" className="bg-white border border-neutral-200 rounded-[32px] p-4 sm:py-5 sm:px-6 md:py-6 md:px-8 flex flex-col lg:flex-row items-center justify-between gap-6 shadow-md shadow-black/5 hover:shadow-xl transition-shadow duration-300 max-w-6xl mx-auto text-left relative">
           {/* Brand & Left description tag */}
           <div className="flex flex-col items-center lg:items-start text-center lg:text-left select-none shrink-0">
             <div className="flex items-center gap-1.5">
@@ -322,19 +360,22 @@ export const Hero: React.FC<HeroProps> = ({ onActionClick, activeTab, setActiveT
             </button>
           </div>
         </div>
+      </div>
 
-        {/* ========================================================= */}
-        {/* DYNAMIC UNDER-COVERS SECTION ACCORDING TO ACTIVE SELECTED TAB */}
-        {/* ========================================================= */}
-        <div className="mt-14 sm:mt-16 text-left max-w-6xl mx-auto w-full relative z-20">
-          
-          {/* TAB 1: LEARN DRIVING */}
+      {/* ========================================================= */}
+      {/* DYNAMIC UNDER-COVERS SECTION ACCORDING TO ACTIVE SELECTED TAB */}
+      {/* ========================================================= */}
+      <section className="relative w-full bg-[#f8f9fa] pt-16 sm:pt-24 pb-20 sm:pb-32 z-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="text-left w-full mx-auto max-w-6xl relative z-20">
+            
+            {/* TAB 1: LEARN DRIVING */}
           {activeTab === "learn" && (
             <div className="space-y-16 animate-fade-in">
               {/* Grid of 3 custom boxes */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {/* Box 1 */}
-                <div className="bg-white border border-neutral-200 rounded-3xl p-6 sm:p-8 flex flex-col items-start gap-4 shadow-sm hover:shadow-md transition-shadow duration-300">
+                <div className="bg-white border border-neutral-200 rounded-3xl p-8 sm:p-10 flex flex-col items-start gap-4 shadow-sm hover:shadow-md transition-shadow duration-300">
                   <div className="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 shrink-0">
                     <FileText className="w-6 h-6 stroke-[2.5]" />
                   </div>
@@ -344,13 +385,13 @@ export const Hero: React.FC<HeroProps> = ({ onActionClick, activeTab, setActiveT
                     </h3>
                     <div className="w-8 h-[3px] bg-[#ff6a00] mt-3 mb-2 rounded-full"></div>
                     <p className="text-xs sm:text-sm text-neutral-500 leading-relaxed font-sans">
-                      Our professional trainers provide hands-on learning with dual control safety cars.
+                      <TypewriterText text="Our professional trainers provide hands-on learning with dual control safety cars." />
                     </p>
                   </div>
                 </div>
 
                 {/* Box 2 */}
-                <div className="bg-white border border-neutral-200 rounded-3xl p-6 sm:p-8 flex flex-col items-start gap-4 shadow-sm hover:shadow-md transition-shadow duration-300">
+                <div className="bg-white border border-neutral-200 rounded-3xl p-8 sm:p-10 flex flex-col items-start gap-4 shadow-sm hover:shadow-md transition-shadow duration-300">
                   <div className="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 shrink-0">
                     <Settings className="w-6 h-6 stroke-[2.5]" />
                   </div>
@@ -360,13 +401,13 @@ export const Hero: React.FC<HeroProps> = ({ onActionClick, activeTab, setActiveT
                     </h3>
                     <div className="w-8 h-[3px] bg-transparent mt-3 mb-2 rounded-full"></div>
                     <p className="text-xs sm:text-sm text-neutral-500 leading-relaxed font-sans">
-                      We offer flexible courses designed for beginners, intermediates, and advanced drivers.
+                      <TypewriterText text="We offer flexible courses designed for beginners, intermediates, and advanced drivers." />
                     </p>
                   </div>
                 </div>
 
                 {/* Box 3 */}
-                <div className="bg-white border border-neutral-200 rounded-3xl p-6 sm:p-8 flex flex-col items-start gap-4 shadow-sm hover:shadow-md transition-shadow duration-300">
+                <div className="bg-white border border-neutral-200 rounded-3xl p-8 sm:p-10 flex flex-col items-start gap-4 shadow-sm hover:shadow-md transition-shadow duration-300">
                   <div className="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 shrink-0">
                     <ShieldCheck className="w-6 h-6 stroke-[2.5]" />
                   </div>
@@ -376,19 +417,27 @@ export const Hero: React.FC<HeroProps> = ({ onActionClick, activeTab, setActiveT
                     </h3>
                     <div className="w-8 h-[3px] bg-transparent mt-3 mb-2 rounded-full"></div>
                     <p className="text-xs sm:text-sm text-neutral-500 leading-relaxed font-sans">
-                      We emphasize defensive driving, road signs boards, and Punjab traffic rules awareness.
+                      <TypewriterText text="We emphasize defensive driving, road signs boards, and Punjab traffic rules awareness." />
                     </p>
                   </div>
                 </div>
               </div>
 
-              {/* About Us section block with precise 2 images overlapping with margins, bg-black version */}
-              <div className="bg-neutral-950 rounded-[40px] p-6 sm:p-10 md:p-12 border border-neutral-900 shadow-2xl relative overflow-hidden">
+              {/* About Us Title Section */}
+              <div className="text-center sm:text-left mt-8 mb-6">
+                <span className="text-sm font-extrabold uppercase tracking-widest text-[#ff6a00]">ABOUT US</span>
+                <h2 className="text-3xl sm:text-4xl font-extrabold text-neutral-900 mt-2 mb-4 leading-tight max-w-2xl">
+                  We are your reliable, all-in-one platform for experienced and professional driving solutions.
+                </h2>
+              </div>
+
+              {/* About Us Content Section */}
+              <div className="bg-transparent rounded-[40px] relative overflow-hidden">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-14">
                   {/* Left column - Overlapping Images with margin styling according to image */}
                   <div className="lg:col-span-5 relative flex flex-col justify-center min-h-[360px] md:min-h-[420px]">
                     {/* Background Overlapping Image Card */}
-                    <div className="absolute left-0 top-4 w-[75%] h-[75%] rounded-3xl overflow-hidden shadow-lg border-4 border-neutral-800 z-10 transition-transform duration-500 hover:scale-[1.02]">
+                    <div className="absolute left-0 top-4 w-[75%] h-[75%] rounded-3xl overflow-hidden shadow-lg border-4 border-white z-10 transition-transform duration-500 hover:scale-[1.02]">
                       <img
                         src="https://images.unsplash.com/photo-1510511459019-5dda7724fd87?auto=format&fit=crop&w=600&q=80"
                         alt="Student driving behind steering wheel"
@@ -396,7 +445,7 @@ export const Hero: React.FC<HeroProps> = ({ onActionClick, activeTab, setActiveT
                       />
                     </div>
                     {/* Foreground Overlapping Image Card with margin applied perfectly in proportion */}
-                    <div className="absolute right-0 bottom-4 w-[70%] h-[70%] rounded-3xl overflow-hidden shadow-xl border-8 border-neutral-900 z-20 transition-transform duration-500 hover:scale-[1.03]">
+                    <div className="absolute right-0 bottom-4 w-[70%] h-[70%] rounded-3xl overflow-hidden shadow-xl border-8 border-white z-20 transition-transform duration-500 hover:scale-[1.03]">
                       <img
                         src="https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80"
                         alt="Car maneuvering through training cones"
@@ -407,14 +456,7 @@ export const Hero: React.FC<HeroProps> = ({ onActionClick, activeTab, setActiveT
 
                   {/* Right column - About Us text content & checkmarks */}
                   <div className="lg:col-span-7 flex flex-col justify-center space-y-6">
-                    <div>
-                      <span className="text-xs font-extrabold uppercase tracking-widest text-[#ff6a00]">ABOUT US</span>
-                      <h2 className="text-3xl sm:text-4xl font-extrabold text-white mt-1 mb-4 leading-tight">
-                        We are your reliable, all-in-one platform for experienced and professional driving solutions.
-                      </h2>
-                    </div>
-
-                    <p className="text-sm sm:text-base text-neutral-300 leading-relaxed font-sans">
+                    <p className="text-sm sm:text-base text-neutral-600 leading-relaxed font-sans">
                       Welcome to <strong>GoDriveify Driving School</strong>. Learning to drive is no longer just a basic skill; it is an essential part of independent and responsible living. This is why choosing a professional driving school plays a vital role in developing safe and confident drivers. A high-quality driving school offers structured training that covers traffic laws, road discipline, vehicle control, and defensive driving techniques designed for real road conditions.
                     </p>
 
@@ -422,12 +464,12 @@ export const Hero: React.FC<HeroProps> = ({ onActionClick, activeTab, setActiveT
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-3">
                       {/* Tick item 1 */}
                       <div className="flex items-start gap-3">
-                        <div className="w-5 h-5 rounded-full bg-orange-500/10 flex items-center justify-center text-[#ff6a00] mt-0.5 shrink-0">
+                        <div className="w-5 h-5 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 mt-0.5 shrink-0">
                           <Check className="w-3.5 h-3.5 stroke-[3]" />
                         </div>
                         <div>
-                          <h4 className="font-extrabold text-sm text-neutral-100">Beginner Driving Course</h4>
-                          <p className="text-[11px] text-neutral-400 mt-0.5 leading-relaxed font-sans">
+                          <h4 className="font-extrabold text-sm text-neutral-900">Beginner Driving Course</h4>
+                          <p className="text-[11px] text-neutral-500 mt-0.5 leading-relaxed font-sans">
                             Learn the basics of driving, road signs, and traffic rules with step-by-step guidance.
                           </p>
                         </div>
@@ -435,12 +477,12 @@ export const Hero: React.FC<HeroProps> = ({ onActionClick, activeTab, setActiveT
 
                       {/* Tick item 2 */}
                       <div className="flex items-start gap-3">
-                        <div className="w-5 h-5 rounded-full bg-orange-500/10 flex items-center justify-center text-[#ff6a00] mt-0.5 shrink-0">
+                        <div className="w-5 h-5 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 mt-0.5 shrink-0">
                           <Check className="w-3.5 h-3.5 stroke-[3]" />
                         </div>
                         <div>
-                          <h4 className="font-extrabold text-sm text-neutral-100">Defensive Driving Training</h4>
-                          <p className="text-[11px] text-neutral-400 mt-0.5 leading-relaxed font-sans">
+                          <h4 className="font-extrabold text-sm text-neutral-900">Defensive Driving Training</h4>
+                          <p className="text-[11px] text-neutral-500 mt-0.5 leading-relaxed font-sans">
                             Develop skills to drive safely in all conditions, avoiding potential hazards on the road.
                           </p>
                         </div>
@@ -448,12 +490,12 @@ export const Hero: React.FC<HeroProps> = ({ onActionClick, activeTab, setActiveT
 
                       {/* Tick item 3 */}
                       <div className="flex items-start gap-3">
-                        <div className="w-5 h-5 rounded-full bg-orange-500/10 flex items-center justify-center text-[#ff6a00] mt-0.5 shrink-0">
+                        <div className="w-5 h-5 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 mt-0.5 shrink-0">
                           <Check className="w-3.5 h-3.5 stroke-[3]" />
                         </div>
                         <div>
-                          <h4 className="font-extrabold text-sm text-neutral-100">License Preparation Course</h4>
-                          <p className="text-[11px] text-neutral-400 mt-0.5 leading-relaxed font-sans">
+                          <h4 className="font-extrabold text-sm text-neutral-900">License Preparation Course</h4>
+                          <p className="text-[11px] text-neutral-500 mt-0.5 leading-relaxed font-sans">
                             Get expert training to pass your official DLIMS Punjab driving license track exam.
                           </p>
                         </div>
@@ -461,12 +503,12 @@ export const Hero: React.FC<HeroProps> = ({ onActionClick, activeTab, setActiveT
 
                       {/* Tick item 4 */}
                       <div className="flex items-start gap-3">
-                        <div className="w-5 h-5 rounded-full bg-orange-500/10 flex items-center justify-center text-[#ff6a00] mt-0.5 shrink-0">
+                        <div className="w-5 h-5 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 mt-0.5 shrink-0">
                           <Check className="w-3.5 h-3.5 stroke-[3]" />
                         </div>
                         <div>
-                          <h4 className="font-extrabold text-sm text-neutral-100">Refresher Course</h4>
-                          <p className="text-[11px] text-neutral-400 mt-0.5 leading-relaxed font-sans">
+                          <h4 className="font-extrabold text-sm text-neutral-900">Refresher Course</h4>
+                          <p className="text-[11px] text-neutral-500 mt-0.5 leading-relaxed font-sans">
                             Already know how to drive? Revitalize your road confidence inside heavy traffic lanes.
                           </p>
                         </div>
@@ -1060,7 +1102,8 @@ export const Hero: React.FC<HeroProps> = ({ onActionClick, activeTab, setActiveT
         {/* Modal containers as back-compatible overlays for navigation hooks */}
         <RentCarModal isOpen={rentOpen} onClose={() => { setRentOpen(false); }} />
         <SaleCarModal isOpen={saleOpen} onClose={() => { setSaleOpen(false); }} />
-      </div>
-    </section>
+        </div>
+      </section>
+    </div>
   );
 };
