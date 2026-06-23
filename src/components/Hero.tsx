@@ -255,9 +255,9 @@ export const Hero: React.FC<HeroProps> = ({ onActionClick, activeTab, setActiveT
 
         {/* Core Heading on White background with Black & Orange text colors */}
         <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-6 leading-tight">
-          Master the Road <br />
+          <TypewriterText text="Master the Road " /> <br />
           <span className="bg-gradient-to-r from-orange-400 via-[#ff6a00] to-orange-500 bg-clip-text text-transparent">
-            With Confidence
+            <TypewriterText text="With Confidence" />
           </span>
         </h1>
 
@@ -427,10 +427,11 @@ export const Hero: React.FC<HeroProps> = ({ onActionClick, activeTab, setActiveT
               </div>
 
               {/* About Us Title Section */}
-              <div className="text-left mt-16 mb-10 w-full max-w-[55rem]">
+              <div className="text-left mt-16 mb-10 w-full max-w-full">
                 <span className="text-sm font-extrabold uppercase tracking-widest text-[#ff6a00] block mb-3">ABOUT US</span>
                 <h2 className="text-[2rem] sm:text-[2.5rem] md:text-[3.25rem] font-bold text-[#001738] leading-tight md:leading-[1.1] tracking-tight">
-                  We are your reliable, all-in-one platform for <br className="hidden md:block" /> experienced and professional driving solutions.
+                  We are your reliable, all-in-one platform for <br className="hidden md:block" />
+                  experienced and professional driving solutions.
                 </h2>
               </div>
 

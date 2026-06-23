@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Navbar } from "./components/Navbar";
 import { Hero } from "./components/Hero";
 import { Programs } from "./components/Programs";
@@ -15,6 +15,10 @@ export default function App() {
   const [selectedProgramId, setSelectedProgramId] = useState("");
   const [bookingTrigger, setBookingTrigger] = useState(0);
   const [hubTab, setHubTab] = useState("learn"); // "learn" | "rent" | "requests"
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   // Scroll smoothly to any specific target segment
   const handleNavClick = (sectionId: string) => {

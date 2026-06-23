@@ -1,19 +1,93 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { DRIVING_PROGRAMS } from "../data";
 import { DrivingProgram } from "../types";
-import { Calendar, CheckCircle2, ChevronRight, GraduationCap } from "lucide-react";
+import { Calendar, CheckCircle2, ChevronRight, GraduationCap, Award, Car, Users, Gauge } from "lucide-react";
+import { motion, useMotionValue, useTransform, animate, useInView } from "motion/react";
 
 interface ProgramsProps {
   onSelectProgram: (programId: string) => void;
 }
 
+const AnimatedNumber = ({ value, duration = 2, delay = 0, suffix = "" }: { value: number, duration?: number, delay?: number, suffix?: string }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const count = useMotionValue(0);
+  const rounded = useTransform(count, (latest) => Math.round(latest) + suffix);
+
+  useEffect(() => {
+    if (isInView) {
+      const controls = animate(count, value, { duration, delay });
+      return controls.stop;
+    }
+  }, [isInView, value, duration, delay, count]);
+
+  return <motion.span ref={ref}>{rounded}</motion.span>;
+};
+
 export const Programs: React.FC<ProgramsProps> = ({ onSelectProgram }) => {
   return (
-    <section id="programs" className="py-24 bg-white border-y border-neutral-100 relative">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-gradient-to-r from-transparent via-orange-500/20 to-transparent"></div>
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Heading */}
+    <>
+      <section className="w-full bg-[#0b101a] py-20 relative overflow-hidden">
+        {/* Decorative subtle background wave line (approximate) */}
+        <div className="absolute top-1/2 left-0 w-full h-[1px] bg-slate-800/60 -translate-y-1/2 z-0 hidden md:block"></div>
+        <div className="absolute top-1/2 left-0 w-full flex justify-between px-20 -translate-y-1/2 z-0 opacity-20 hidden md:flex">
+             {/* Simple decorative wave curves */}
+             <svg width="100%" height="40" viewBox="0 0 1000 40" preserveAspectRatio="none" fill="none" stroke="currentColor" className="text-slate-600">
+               <path d="M0,20 Q250,40 500,20 T1000,20" strokeWidth="2" />
+             </svg>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+            {/* Stat Box 1 */}
+            <div className="relative overflow-hidden rounded-[24px] p-[2px] bg-slate-800/40 group h-64">
+              <div className="absolute top-1/2 left-1/2 w-[250%] h-[250%] -translate-x-1/2 -translate-y-1/2 animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_0deg,transparent_0_340deg,#ff6a00_360deg)] opacity-80"></div>
+              <div className="relative w-full h-full bg-[#151b26] rounded-[22px] flex flex-col items-center justify-center text-center p-6 z-10">
+                <Award className="w-10 h-10 text-[#ff6a00] mb-4 stroke-[1.5]" />
+                <h3 className="text-5xl font-bold text-white mb-2 tracking-tight"><AnimatedNumber value={16} /></h3>
+                <p className="text-[#8e98a8] text-xs font-bold tracking-widest uppercase mt-1">Years Experience</p>
+              </div>
+            </div>
+
+            {/* Stat Box 2 */}
+            <div className="relative overflow-hidden rounded-[24px] p-[2px] bg-slate-800/40 group h-64">
+              <div className="absolute top-1/2 left-1/2 w-[250%] h-[250%] -translate-x-1/2 -translate-y-1/2 animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_0deg,transparent_0_340deg,#ff6a00_360deg)] opacity-80" style={{ animationDelay: '-1s' }}></div>
+              <div className="relative w-full h-full bg-[#151b26] rounded-[22px] flex flex-col items-center justify-center text-center p-6 z-10">
+                <Car className="w-10 h-10 text-[#ff6a00] mb-4 stroke-[1.5]" />
+                <h3 className="text-5xl font-bold text-white mb-2 tracking-tight"><AnimatedNumber value={25} /></h3>
+                <p className="text-[#8e98a8] text-xs font-bold tracking-widest uppercase mt-1">Professional Instructor</p>
+              </div>
+            </div>
+
+            {/* Stat Box 3 */}
+            <div className="relative overflow-hidden rounded-[24px] p-[2px] bg-slate-800/40 group h-64">
+              <div className="absolute top-1/2 left-1/2 w-[250%] h-[250%] -translate-x-1/2 -translate-y-1/2 animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_0deg,transparent_0_340deg,#ff6a00_360deg)] opacity-80" style={{ animationDelay: '-2s' }}></div>
+              <div className="relative w-full h-full bg-[#151b26] rounded-[22px] flex flex-col items-center justify-center text-center p-6 z-10">
+                <Users className="w-10 h-10 text-[#ff6a00] mb-4 stroke-[1.5]" />
+                <h3 className="text-5xl font-bold text-white mb-2 tracking-tight"><AnimatedNumber value={150} suffix="+" /></h3>
+                <p className="text-[#8e98a8] text-xs font-bold tracking-widest uppercase mt-1">Happy Reviews</p>
+              </div>
+            </div>
+
+            {/* Stat Box 4 */}
+            <div className="relative overflow-hidden rounded-[24px] p-[2px] bg-slate-800/40 group h-64">
+              <div className="absolute top-1/2 left-1/2 w-[250%] h-[250%] -translate-x-1/2 -translate-y-1/2 animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_0deg,transparent_0_340deg,#ff6a00_360deg)] opacity-80" style={{ animationDelay: '-3s' }}></div>
+              <div className="relative w-full h-full bg-[#151b26] rounded-[22px] flex flex-col items-center justify-center text-center p-6 z-10">
+                <Gauge className="w-10 h-10 text-[#ff6a00] mb-4 stroke-[1.5]" />
+                <h3 className="text-5xl font-bold text-white mb-2 tracking-tight"><AnimatedNumber value={125} suffix="+" /></h3>
+                <p className="text-[#8e98a8] text-xs font-bold tracking-widest uppercase mt-1">Students Trained</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="programs" className="py-24 bg-white border-y border-neutral-100 relative">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-gradient-to-r from-transparent via-orange-500/20 to-transparent"></div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          {/* Section Heading */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-orange-600 uppercase font-extrabold tracking-widest text-xs">Our Courses</span>
           <h2 className="text-3xl sm:text-4xl font-black text-neutral-950 mt-2 mb-4">
@@ -158,5 +232,6 @@ export const Programs: React.FC<ProgramsProps> = ({ onSelectProgram }) => {
         </div>
       </div>
     </section>
+    </>
   );
 };
