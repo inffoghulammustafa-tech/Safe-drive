@@ -437,22 +437,22 @@ export const Hero: React.FC<HeroProps> = ({ onActionClick, activeTab, setActiveT
               {/* About Us Content Section */}
               <div className="bg-transparent rounded-[40px] relative overflow-hidden">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-14">
-                  {/* Left column - Overlapping Images with margin styling according to image */}
-                  <div className="lg:col-span-5 relative flex flex-col justify-center min-h-[360px] md:min-h-[420px]">
-                    {/* Background Overlapping Image Card */}
-                    <div className="absolute left-0 top-4 w-[75%] h-[75%] rounded-3xl overflow-hidden shadow-lg border-4 border-white z-10 transition-transform duration-500 hover:scale-[1.02]">
+                  {/* Left column - Separate Images */}
+                  <div className="lg:col-span-5 flex flex-col sm:flex-row lg:flex-col gap-6 justify-center">
+                    {/* First Image Card */}
+                    <div className="w-full rounded-3xl overflow-hidden shadow-lg border-4 border-white transition-transform duration-500 hover:scale-[1.02]">
                       <img
-                        src="https://images.unsplash.com/photo-1510511459019-5dda7724fd87?auto=format&fit=crop&w=600&q=80"
+                        src="https://i.pinimg.com/736x/a3/c4/5e/a3c45ef8ce611ded7658c97523ec3402.jpg"
                         alt="Student driving behind steering wheel"
-                        className="w-full h-full object-cover"
+                        className="w-full h-64 sm:h-72 lg:h-64 object-cover"
                       />
                     </div>
-                    {/* Foreground Overlapping Image Card with margin applied perfectly in proportion */}
-                    <div className="absolute right-0 bottom-4 w-[70%] h-[70%] rounded-3xl overflow-hidden shadow-xl border-8 border-white z-20 transition-transform duration-500 hover:scale-[1.03]">
+                    {/* Second Image Card */}
+                    <div className="w-full rounded-3xl overflow-hidden shadow-lg border-4 border-white transition-transform duration-500 hover:scale-[1.02]">
                       <img
-                        src="https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80"
+                        src="https://i.pinimg.com/1200x/14/c4/0a/14c40a73d5697c188dcc07a36ef64c2b.jpg"
                         alt="Car maneuvering through training cones"
-                        className="w-full h-full object-cover"
+                        className="w-full h-64 sm:h-72 lg:h-64 object-cover"
                       />
                     </div>
                   </div>
