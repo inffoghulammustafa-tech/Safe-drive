@@ -1,16 +1,16 @@
 import React, { useEffect, useRef } from "react";
 import { DRIVING_PROGRAMS } from "../data";
 import { DrivingProgram } from "../types";
-import { Calendar, CheckCircle2, ChevronRight, GraduationCap, Award, Car, Users, Gauge } from "lucide-react";
+import { Calendar, CheckCircle2, ChevronRight, GraduationCap, Award, Car, Users, Gauge, Shield, ArrowRight } from "lucide-react";
 import { motion, useMotionValue, useTransform, animate, useInView } from "motion/react";
 
 interface ProgramsProps {
   onSelectProgram: (programId: string) => void;
 }
 
-const AnimatedNumber = ({ value, duration = 2, delay = 0, suffix = "" }: { value: number, duration?: number, delay?: number, suffix?: string }) => {
+const AnimatedNumber = ({ value, duration = 3.5, delay = 0, suffix = "" }: { value: number, duration?: number, delay?: number, suffix?: string }) => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
   const count = useMotionValue(0);
   const rounded = useTransform(count, (latest) => Math.round(latest) + suffix);
 
@@ -40,9 +40,16 @@ export const Programs: React.FC<ProgramsProps> = ({ onSelectProgram }) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             {/* Stat Box 1 */}
-            <div className="relative overflow-hidden rounded-[24px] p-[2px] bg-slate-800/40 group h-64">
-              <div className="absolute top-1/2 left-1/2 w-[250%] h-[250%] -translate-x-1/2 -translate-y-1/2 animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_0deg,transparent_0_340deg,#ff6a00_360deg)] opacity-80"></div>
-              <div className="relative w-full h-full bg-[#151b26] rounded-[22px] flex flex-col items-center justify-center text-center p-6 z-10">
+            <div className="relative overflow-hidden rounded-[24px] p-[2px] bg-[#1a2230] group h-64 border border-slate-700/50 hover:border-transparent transition-colors duration-200">
+              {/* Spinning glow: active only on hover */}
+              <div className="absolute top-1/2 left-1/2 w-[200%] h-[200%] -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 animate-[spin_3s_linear_infinite] z-0">
+                <div className="w-full h-full bg-[conic-gradient(from_0deg,transparent_0_180deg,#ff6a00_360deg)]"></div>
+              </div>
+              <div className="absolute top-1/2 left-1/2 w-[200%] h-[200%] -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 animate-[spin_3s_linear_infinite] blur-md z-0">
+                <div className="w-full h-full bg-[conic-gradient(from_0deg,transparent_0_180deg,#ff6a00_360deg)]"></div>
+              </div>
+
+              <div className="relative w-full h-full bg-[#0b101a] rounded-[22px] flex flex-col items-center justify-center text-center p-6 z-10 transition-colors duration-200 group-hover:bg-[#0b101a]/90">
                 <Award className="w-10 h-10 text-[#ff6a00] mb-4 stroke-[1.5]" />
                 <h3 className="text-5xl font-bold text-white mb-2 tracking-tight"><AnimatedNumber value={16} /></h3>
                 <p className="text-[#8e98a8] text-xs font-bold tracking-widest uppercase mt-1">Years Experience</p>
@@ -50,9 +57,15 @@ export const Programs: React.FC<ProgramsProps> = ({ onSelectProgram }) => {
             </div>
 
             {/* Stat Box 2 */}
-            <div className="relative overflow-hidden rounded-[24px] p-[2px] bg-slate-800/40 group h-64">
-              <div className="absolute top-1/2 left-1/2 w-[250%] h-[250%] -translate-x-1/2 -translate-y-1/2 animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_0deg,transparent_0_340deg,#ff6a00_360deg)] opacity-80" style={{ animationDelay: '-1s' }}></div>
-              <div className="relative w-full h-full bg-[#151b26] rounded-[22px] flex flex-col items-center justify-center text-center p-6 z-10">
+            <div className="relative overflow-hidden rounded-[24px] p-[2px] bg-[#1a2230] group h-64 border border-slate-700/50 hover:border-transparent transition-colors duration-200">
+              <div className="absolute top-1/2 left-1/2 w-[200%] h-[200%] -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 animate-[spin_3s_linear_infinite] z-0" style={{ animationDelay: '-0.7s' }}>
+                <div className="w-full h-full bg-[conic-gradient(from_0deg,transparent_0_180deg,#ff6a00_360deg)]"></div>
+              </div>
+              <div className="absolute top-1/2 left-1/2 w-[200%] h-[200%] -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 animate-[spin_3s_linear_infinite] blur-md z-0" style={{ animationDelay: '-0.7s' }}>
+                <div className="w-full h-full bg-[conic-gradient(from_0deg,transparent_0_180deg,#ff6a00_360deg)]"></div>
+              </div>
+
+              <div className="relative w-full h-full bg-[#0b101a] rounded-[22px] flex flex-col items-center justify-center text-center p-6 z-10 transition-colors duration-200 group-hover:bg-[#0b101a]/90">
                 <Car className="w-10 h-10 text-[#ff6a00] mb-4 stroke-[1.5]" />
                 <h3 className="text-5xl font-bold text-white mb-2 tracking-tight"><AnimatedNumber value={25} /></h3>
                 <p className="text-[#8e98a8] text-xs font-bold tracking-widest uppercase mt-1">Professional Instructor</p>
@@ -60,9 +73,15 @@ export const Programs: React.FC<ProgramsProps> = ({ onSelectProgram }) => {
             </div>
 
             {/* Stat Box 3 */}
-            <div className="relative overflow-hidden rounded-[24px] p-[2px] bg-slate-800/40 group h-64">
-              <div className="absolute top-1/2 left-1/2 w-[250%] h-[250%] -translate-x-1/2 -translate-y-1/2 animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_0deg,transparent_0_340deg,#ff6a00_360deg)] opacity-80" style={{ animationDelay: '-2s' }}></div>
-              <div className="relative w-full h-full bg-[#151b26] rounded-[22px] flex flex-col items-center justify-center text-center p-6 z-10">
+            <div className="relative overflow-hidden rounded-[24px] p-[2px] bg-[#1a2230] group h-64 border border-slate-700/50 hover:border-transparent transition-colors duration-200">
+              <div className="absolute top-1/2 left-1/2 w-[200%] h-[200%] -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 animate-[spin_3s_linear_infinite] z-0" style={{ animationDelay: '-1.4s' }}>
+                <div className="w-full h-full bg-[conic-gradient(from_0deg,transparent_0_180deg,#ff6a00_360deg)]"></div>
+              </div>
+              <div className="absolute top-1/2 left-1/2 w-[200%] h-[200%] -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 animate-[spin_3s_linear_infinite] blur-md z-0" style={{ animationDelay: '-1.4s' }}>
+                <div className="w-full h-full bg-[conic-gradient(from_0deg,transparent_0_180deg,#ff6a00_360deg)]"></div>
+              </div>
+
+              <div className="relative w-full h-full bg-[#0b101a] rounded-[22px] flex flex-col items-center justify-center text-center p-6 z-10 transition-colors duration-200 group-hover:bg-[#0b101a]/90">
                 <Users className="w-10 h-10 text-[#ff6a00] mb-4 stroke-[1.5]" />
                 <h3 className="text-5xl font-bold text-white mb-2 tracking-tight"><AnimatedNumber value={150} suffix="+" /></h3>
                 <p className="text-[#8e98a8] text-xs font-bold tracking-widest uppercase mt-1">Happy Reviews</p>
@@ -70,13 +89,146 @@ export const Programs: React.FC<ProgramsProps> = ({ onSelectProgram }) => {
             </div>
 
             {/* Stat Box 4 */}
-            <div className="relative overflow-hidden rounded-[24px] p-[2px] bg-slate-800/40 group h-64">
-              <div className="absolute top-1/2 left-1/2 w-[250%] h-[250%] -translate-x-1/2 -translate-y-1/2 animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_0deg,transparent_0_340deg,#ff6a00_360deg)] opacity-80" style={{ animationDelay: '-3s' }}></div>
-              <div className="relative w-full h-full bg-[#151b26] rounded-[22px] flex flex-col items-center justify-center text-center p-6 z-10">
+            <div className="relative overflow-hidden rounded-[24px] p-[2px] bg-[#1a2230] group h-64 border border-slate-700/50 hover:border-transparent transition-colors duration-200">
+              <div className="absolute top-1/2 left-1/2 w-[200%] h-[200%] -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 animate-[spin_3s_linear_infinite] z-0" style={{ animationDelay: '-2.1s' }}>
+                <div className="w-full h-full bg-[conic-gradient(from_0deg,transparent_0_180deg,#ff6a00_360deg)]"></div>
+              </div>
+              <div className="absolute top-1/2 left-1/2 w-[200%] h-[200%] -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 animate-[spin_3s_linear_infinite] blur-md z-0" style={{ animationDelay: '-2.1s' }}>
+                <div className="w-full h-full bg-[conic-gradient(from_0deg,transparent_0_180deg,#ff6a00_360deg)]"></div>
+              </div>
+
+              <div className="relative w-full h-full bg-[#0b101a] rounded-[22px] flex flex-col items-center justify-center text-center p-6 z-10 transition-colors duration-200 group-hover:bg-[#0b101a]/90">
                 <Gauge className="w-10 h-10 text-[#ff6a00] mb-4 stroke-[1.5]" />
                 <h3 className="text-5xl font-bold text-white mb-2 tracking-tight"><AnimatedNumber value={125} suffix="+" /></h3>
                 <p className="text-[#8e98a8] text-xs font-bold tracking-widest uppercase mt-1">Students Trained</p>
               </div>
+            </div>
+          </div>
+
+          {/* New Section: Master the Road */}
+          <div className="mt-32">
+            <div className="flex flex-col items-center text-center mb-16">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-orange-500/30 bg-orange-500/10 mb-6">
+                <Shield className="w-4 h-4 text-orange-500" />
+                <span className="text-orange-500 text-[10px] font-bold uppercase tracking-[0.2em]">Certified Instructors</span>
+              </div>
+              <h2 className="text-4xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-6 tracking-tight leading-[1.1] max-w-4xl">
+                Master the Road at Any Age.<br />
+                Because It's Never Too Late to Take the Wheel.
+              </h2>
+              <p className="text-[#8e98a8] text-sm md:text-base max-w-3xl leading-relaxed">
+                Flexible custom programs structured perfectly alongside patient, professional trainers to shape you into an extremely safe, completely confident lifelong driver.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {/* Card 1 */}
+              <div 
+                onClick={() => onSelectProgram("pricing")}
+                className="bg-[#151b26] rounded-2xl p-6 flex flex-col items-center text-center border border-[#2a3441] hover:border-orange-500/80 hover:shadow-[0_0_25px_-5px_rgba(255,106,0,0.5)] transition-all duration-75 group cursor-pointer"
+              >
+                <div className="bg-white rounded-[14px] w-full h-32 mb-6 flex items-center justify-center p-4">
+                  {/* Mock Logo 1 */}
+                  <div className="w-20 h-20 rounded-full border-[5px] border-[#20603d] flex items-center justify-center relative">
+                    <div className="absolute inset-1 border border-[#20603d] rounded-full"></div>
+                    <div className="text-[#20603d] text-[9px] font-black uppercase text-center leading-[1.1]">Pakistan<br/>Safety<br/>Council</div>
+                  </div>
+                </div>
+                <h3 className="text-[1.15rem] font-bold text-white group-hover:text-orange-500 transition-colors duration-75 mb-6 leading-tight">
+                  Beginner Driving<br/>Course
+                </h3>
+                <button 
+                  onClick={(e) => { e.stopPropagation(); onSelectProgram("pricing"); }}
+                  className="mt-auto w-full py-3 rounded-lg bg-[#222b3b] group-hover:bg-[#ff6a00] text-white text-sm font-semibold flex items-center justify-center gap-2 transition-colors duration-75"
+                >
+                  View Plans & Classes <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
+
+              {/* Card 2 */}
+              <div
+                onClick={() => onSelectProgram("pricing")}
+                className="bg-[#151b26] rounded-2xl p-6 flex flex-col items-center text-center border border-[#2a3441] hover:border-orange-500/80 hover:shadow-[0_0_25px_-5px_rgba(255,106,0,0.5)] transition-all duration-75 group cursor-pointer"
+              >
+                <div className="bg-white rounded-[14px] w-full h-32 mb-6 flex items-center justify-center p-4">
+                  {/* Mock Logo 2 */}
+                  <div className="w-[4.5rem] h-20 bg-[#355c96] rounded-t-xl rounded-b-[2rem] flex flex-col items-center justify-center border-4 border-[#ffd700] p-1 shadow-sm relative">
+                     <span className="text-[#ffd700] text-[6px] font-bold absolute top-2 text-center leading-tight">CITY TRAFFIC<br/>POLICE</span>
+                     <span className="text-white text-[7px] font-black absolute bottom-4 text-center">LAHORE</span>
+                  </div>
+                </div>
+                <h3 className="text-[1.15rem] font-bold text-white group-hover:text-orange-500 transition-colors duration-75 mb-6 leading-tight">
+                  Confidence Booster<br/>Class
+                </h3>
+                <button 
+                  onClick={(e) => { e.stopPropagation(); onSelectProgram("pricing"); }}
+                  className="mt-auto w-full py-3 rounded-lg bg-[#222b3b] group-hover:bg-[#ff6a00] text-white text-sm font-semibold flex items-center justify-center gap-2 transition-colors duration-75"
+                >
+                  View Plans & Classes <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
+
+               {/* Card 3 */}
+               <div
+                onClick={() => onSelectProgram("pricing")}
+                className="bg-[#151b26] rounded-2xl p-6 flex flex-col items-center text-center border border-[#2a3441] hover:border-orange-500/80 hover:shadow-[0_0_25px_-5px_rgba(255,106,0,0.5)] transition-all duration-75 group cursor-pointer"
+               >
+                <div className="bg-white rounded-[14px] w-full h-32 mb-6 flex items-center justify-center p-4">
+                  {/* Mock Logo 3 */}
+                  <div className="w-20 h-20 rounded-full border-[4px] border-[#e32636] flex flex-col items-center justify-center relative overlow-hidden">
+                     <div className="flex flex-col items-center mt-1">
+                       <span className="text-[#e32636] text-[8px] font-black uppercase text-center leading-none">Road Safety</span>
+                       <span className="text-[#e32636] text-[6px] font-bold uppercase text-center leading-none mt-0.5">Council of Pakistan</span>
+                     </div>
+                     <Car className="w-6 h-6 text-[#e32636] mt-1" strokeWidth={2.5} />
+                  </div>
+                </div>
+                <h3 className="text-[1.15rem] font-bold text-white group-hover:text-orange-500 transition-colors duration-75 mb-6 leading-tight">
+                  Road Test Intensive<br/>Prep
+                </h3>
+                <button 
+                  onClick={(e) => { e.stopPropagation(); onSelectProgram("pricing"); }}
+                  className="mt-auto w-full py-3 rounded-lg bg-[#222b3b] group-hover:bg-[#ff6a00] text-white text-sm font-semibold flex items-center justify-center gap-2 transition-colors duration-75"
+                >
+                  View Plans & Classes <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
+
+              {/* Card 4 */}
+              <div
+                onClick={() => onSelectProgram("pricing")}
+                className="bg-[#151b26] rounded-2xl p-6 flex flex-col items-center text-center border border-[#2a3441] hover:border-orange-500/80 hover:shadow-[0_0_25px_-5px_rgba(255,106,0,0.5)] transition-all duration-75 group cursor-pointer"
+              >
+                <div className="bg-white rounded-[14px] w-full h-32 mb-6 flex items-center justify-center p-4">
+                  {/* Mock Logo 4: Slippery road diamond */}
+                  <div className="w-[3.5rem] h-[3.5rem] bg-[#ffd700] rounded-md rotate-45 flex items-center justify-center border-4 border-black">
+                    <div className="-rotate-45 flex flex-col items-center ml-0.5 mt-1">
+                       <Car className="w-5 h-5 text-black -mb-1" strokeWidth={3} />
+                       <div className="text-black text-[12px] font-black tracking-[0.05em] mt-1 italic">~ ~</div>
+                    </div>
+                  </div>
+                </div>
+                <h3 className="text-[1.15rem] font-bold text-[#ff6a00] group-hover:text-white transition-colors duration-75 mb-6 leading-tight">
+                  Road Sign Test<br/>&nbsp;
+                </h3>
+                <button 
+                  onClick={(e) => { e.stopPropagation(); onSelectProgram("pricing"); }}
+                  className="mt-auto w-full py-3 rounded-lg bg-[#222b3b] group-hover:bg-[#ff6a00] text-white text-sm font-semibold flex items-center justify-center gap-2 transition-colors duration-75"
+                >
+                  View Plans & Classes <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+
+            <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 text-sm text-[#8e98a8]">
+              <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#151b26] border border-[#2a3441] shadow-sm">
+                <Award className="w-4 h-4 text-[#ff6a00]" />
+                <span className="text-white font-medium text-xs sm:text-sm tracking-wide">Government Accredited & Approved Curriculum</span>
+              </div>
+              <span className="hidden sm:inline text-slate-700 font-bold">•</span>
+              <p className="text-center text-xs sm:text-sm">
+                Need custom timing? <a href="#" className="text-[#ff6a00] font-bold hover:underline">Contact Our Support</a> to design a personalized timeline.
+              </p>
             </div>
           </div>
         </div>

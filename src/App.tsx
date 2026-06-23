@@ -6,6 +6,7 @@ import { CourseConfigurator } from "./components/CourseConfigurator";
 import { SignQuiz } from "./components/SignQuiz";
 import { AiAssistant } from "./components/AiAssistant";
 import { MyBookings } from "./components/MyBookings";
+import { PricingPage } from "./components/PricingPage";
 import { Footer } from "./components/Footer";
 import { StudentBooking } from "./types";
 import { AlertCircle, HelpCircle, ArrowUp } from "lucide-react";
@@ -23,20 +24,22 @@ export default function App() {
   // Scroll smoothly to any specific target segment
   const handleNavClick = (sectionId: string) => {
     setActiveSection(sectionId);
-    if (sectionId === "home" || sectionId === "logo") {
+    if (sectionId === "home" || sectionId === "logo" || sectionId === "pricing") {
       window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
-      const element = document.getElementById(sectionId);
-      if (element) {
-        // Also offset slightly if needed, or scroll into view perfectly
-        element.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          // Also offset slightly if needed, or scroll into view perfectly
+          element.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }, 100);
     }
   };
 
   const handleSelectProgram = (programId: string) => {
-    setSelectedProgramId(programId);
-    handleNavClick("configurator");
+    // Navigate to pricing page instead of configurator
+    handleNavClick("pricing");
   };
 
   const handleBookingSuccess = (booking: StudentBooking) => {
@@ -56,42 +59,46 @@ export default function App() {
       <Navbar onNavClick={handleNavClick} activeSection={activeSection} onHubTabChange={setHubTab} />
 
       {/* 2. Main Content Container */}
-      <main className="relative z-10">
-        
-        {/* SECTION: HOME (Hero & stats dashboard) */}
-        <div id="home" className="relative z-0">
-          <Hero onActionClick={handleNavClick} activeTab={hubTab} setActiveTab={setHubTab} />
-        </div>
+      {activeSection === "pricing" ? (
+        <PricingPage onBackToHome={() => handleNavClick("home")} />
+      ) : (
+        <main className="relative z-10">
+          
+          {/* SECTION: HOME (Hero & stats dashboard) */}
+          <div id="home" className="relative z-0">
+            <Hero onActionClick={handleNavClick} activeTab={hubTab} setActiveTab={setHubTab} />
+          </div>
 
-        {/* SECTION: PROGRAMS (Course catalog selections) */}
-        <div id="programs" className="relative z-10 bg-white">
-          <Programs onSelectProgram={handleSelectProgram} />
-        </div>
+          {/* SECTION: PROGRAMS (Course catalog selections) */}
+          <div id="programs" className="relative z-10 bg-white">
+            <Programs onSelectProgram={handleSelectProgram} />
+          </div>
 
-        {/* SECTION: CALCULATOR CONFIGURATOR (Cost estimate & registration bookings slotting) */}
-        <div id="configurator" className="relative z-10 bg-white border-t border-neutral-100">
-          <CourseConfigurator
-            selectedProgramId={selectedProgramId}
-            onBookingSuccess={handleBookingSuccess}
-          />
-        </div>
+          {/* SECTION: CALCULATOR CONFIGURATOR (Cost estimate & registration bookings slotting) */}
+          <div id="configurator" className="relative z-10 bg-white border-t border-neutral-100">
+            <CourseConfigurator
+              selectedProgramId={selectedProgramId}
+              onBookingSuccess={handleBookingSuccess}
+            />
+          </div>
 
-        {/* SECTION: EXAM SIGN QUIZ (Traffic signs interactive theory test practice) */}
-        <div id="quiz" className="relative z-10 bg-white border-t border-neutral-100">
-          <SignQuiz />
-        </div>
+          {/* SECTION: EXAM SIGN QUIZ (Traffic signs interactive theory test practice) */}
+          <div id="quiz" className="relative z-10 bg-white border-t border-neutral-100">
+            <SignQuiz />
+          </div>
 
-        {/* SECTION: AI ROAD ADVISOR CHAT (Knowledge query proxy desk) */}
-        <div id="ai-advisor" className="relative z-10 bg-white border-t border-neutral-100">
-          <AiAssistant />
-        </div>
+          {/* SECTION: AI ROAD ADVISOR CHAT (Knowledge query proxy desk) */}
+          <div id="ai-advisor" className="relative z-10 bg-white border-t border-neutral-100">
+            <AiAssistant />
+          </div>
 
-        {/* SECTION: MY BOOKINGS (Schedule list syllabus checklist records logs) */}
-        <div id="bookings" className="relative z-10 bg-white border-t border-neutral-100">
-          <MyBookings renewTrigger={bookingTrigger} />
-        </div>
+          {/* SECTION: MY BOOKINGS (Schedule list syllabus checklist records logs) */}
+          <div id="bookings" className="relative z-10 bg-white border-t border-neutral-100">
+            <MyBookings renewTrigger={bookingTrigger} />
+          </div>
 
-      </main>
+        </main>
+      )}
 
       {/* QUICK FLOATING FAQ BAR helper */}
       <div className="fixed bottom-6 right-6 z-40 hidden sm:block">
