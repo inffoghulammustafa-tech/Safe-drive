@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ShieldCheck, CalendarRange, MapPin, Award, Users, Star, Car, Phone, Sparkles, Bookmark, Search, FileText, Settings, Upload, Lock, ThumbsUp, Check, Info, FileCheck } from "lucide-react";
+import { ShieldCheck, CalendarRange, MapPin, Award, Users, Star, Car, Phone, Sparkles, Bookmark, Search, FileText, Settings, Upload, Lock, ThumbsUp, Check, Info, FileCheck, ArrowRight } from "lucide-react";
 import { RentCarModal, SaleCarModal } from "./HeaderModals";
 import { motion } from "motion/react";
 
@@ -9,12 +9,12 @@ const TypewriterText = ({ text }: { text: string }) => {
     <motion.span
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-10%" }}
+      viewport={{ once: false, margin: "-10%" }}
       variants={{
         hidden: { opacity: 1 },
         visible: {
           opacity: 1,
-          transition: { staggerChildren: 0.1, delayChildren: 0.2 }
+          transition: { staggerChildren: 0.012, delayChildren: 0.2 }
         }
       }}
     >
@@ -427,32 +427,32 @@ export const Hero: React.FC<HeroProps> = ({ onActionClick, activeTab, setActiveT
               </div>
 
               {/* About Us Title Section */}
-              <div className="text-center sm:text-left mt-8 mb-6">
-                <span className="text-sm font-extrabold uppercase tracking-widest text-[#ff6a00]">ABOUT US</span>
-                <h2 className="text-3xl sm:text-4xl font-extrabold text-neutral-900 mt-2 mb-4 leading-tight max-w-2xl">
-                  We are your reliable, all-in-one platform for experienced and professional driving solutions.
+              <div className="text-left mt-16 mb-10 w-full max-w-[55rem]">
+                <span className="text-sm font-extrabold uppercase tracking-widest text-[#ff6a00] block mb-3">ABOUT US</span>
+                <h2 className="text-[2rem] sm:text-[2.5rem] md:text-[3.25rem] font-bold text-[#001738] leading-tight md:leading-[1.1] tracking-tight">
+                  We are your reliable, all-in-one platform for <br className="hidden md:block" /> experienced and professional driving solutions.
                 </h2>
               </div>
 
               {/* About Us Content Section */}
               <div className="bg-transparent rounded-[40px] relative overflow-hidden">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-14">
-                  {/* Left column - Separate Images */}
-                  <div className="lg:col-span-5 flex flex-col sm:flex-row lg:flex-col gap-6 justify-center">
-                    {/* First Image Card */}
-                    <div className="w-full rounded-3xl overflow-hidden shadow-lg border-4 border-white transition-transform duration-500 hover:scale-[1.02]">
+                  {/* Left column - Overlapping Images with margin styling according to image */}
+                  <div className="lg:col-span-5 relative flex flex-col justify-center min-h-[360px] md:min-h-[420px]">
+                    {/* Background Overlapping Image Card */}
+                    <div className="absolute left-0 top-4 w-[75%] h-[75%] rounded-3xl overflow-hidden shadow-lg border-4 border-white z-10 transition-transform duration-500 hover:scale-[1.02]">
                       <img
                         src="https://i.pinimg.com/736x/a3/c4/5e/a3c45ef8ce611ded7658c97523ec3402.jpg"
                         alt="Student driving behind steering wheel"
-                        className="w-full h-64 sm:h-72 lg:h-64 object-cover"
+                        className="w-full h-full object-cover"
                       />
                     </div>
-                    {/* Second Image Card */}
-                    <div className="w-full rounded-3xl overflow-hidden shadow-lg border-4 border-white transition-transform duration-500 hover:scale-[1.02]">
+                    {/* Foreground Overlapping Image Card with margin applied perfectly in proportion */}
+                    <div className="absolute right-0 bottom-4 w-[70%] h-[70%] rounded-3xl overflow-hidden shadow-xl border-8 border-white z-20 transition-transform duration-500 hover:scale-[1.03]">
                       <img
                         src="https://i.pinimg.com/1200x/14/c4/0a/14c40a73d5697c188dcc07a36ef64c2b.jpg"
                         alt="Car maneuvering through training cones"
-                        className="w-full h-64 sm:h-72 lg:h-64 object-cover"
+                        className="w-full h-full object-cover"
                       />
                     </div>
                   </div>
@@ -467,12 +467,12 @@ export const Hero: React.FC<HeroProps> = ({ onActionClick, activeTab, setActiveT
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-3">
                       {/* Tick item 1 */}
                       <div className="flex items-start gap-3">
-                        <div className="w-5 h-5 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 mt-0.5 shrink-0">
+                        <div className="w-5 h-5 rounded-full border border-[#ff6a00] flex items-center justify-center text-[#ff6a00] mt-0.5 shrink-0">
                           <Check className="w-3.5 h-3.5 stroke-[3]" />
                         </div>
                         <div>
-                          <h4 className="font-extrabold text-sm text-neutral-900">Beginner Driving Course</h4>
-                          <p className="text-[11px] text-neutral-500 mt-0.5 leading-relaxed font-sans">
+                          <h4 className="font-bold text-sm text-neutral-900">Beginner Driving Course</h4>
+                          <p className="text-[12px] text-neutral-500 mt-0.5 leading-relaxed font-sans">
                             Learn the basics of driving, road signs, and traffic rules with step-by-step guidance.
                           </p>
                         </div>
@@ -480,12 +480,12 @@ export const Hero: React.FC<HeroProps> = ({ onActionClick, activeTab, setActiveT
 
                       {/* Tick item 2 */}
                       <div className="flex items-start gap-3">
-                        <div className="w-5 h-5 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 mt-0.5 shrink-0">
+                        <div className="w-5 h-5 rounded-full border border-[#ff6a00] flex items-center justify-center text-[#ff6a00] mt-0.5 shrink-0">
                           <Check className="w-3.5 h-3.5 stroke-[3]" />
                         </div>
                         <div>
-                          <h4 className="font-extrabold text-sm text-neutral-900">Defensive Driving Training</h4>
-                          <p className="text-[11px] text-neutral-500 mt-0.5 leading-relaxed font-sans">
+                          <h4 className="font-bold text-sm text-neutral-900">Defensive Driving Training</h4>
+                          <p className="text-[12px] text-neutral-500 mt-0.5 leading-relaxed font-sans">
                             Develop skills to drive safely in all conditions, avoiding potential hazards on the road.
                           </p>
                         </div>
@@ -493,12 +493,12 @@ export const Hero: React.FC<HeroProps> = ({ onActionClick, activeTab, setActiveT
 
                       {/* Tick item 3 */}
                       <div className="flex items-start gap-3">
-                        <div className="w-5 h-5 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 mt-0.5 shrink-0">
+                        <div className="w-5 h-5 rounded-full border border-[#ff6a00] flex items-center justify-center text-[#ff6a00] mt-0.5 shrink-0">
                           <Check className="w-3.5 h-3.5 stroke-[3]" />
                         </div>
                         <div>
-                          <h4 className="font-extrabold text-sm text-neutral-900">License Preparation Course</h4>
-                          <p className="text-[11px] text-neutral-500 mt-0.5 leading-relaxed font-sans">
+                          <h4 className="font-bold text-sm text-neutral-900">License Preparation Course</h4>
+                          <p className="text-[12px] text-neutral-500 mt-0.5 leading-relaxed font-sans">
                             Get expert training to pass your official DLIMS Punjab driving license track exam.
                           </p>
                         </div>
@@ -506,16 +506,23 @@ export const Hero: React.FC<HeroProps> = ({ onActionClick, activeTab, setActiveT
 
                       {/* Tick item 4 */}
                       <div className="flex items-start gap-3">
-                        <div className="w-5 h-5 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 mt-0.5 shrink-0">
+                        <div className="w-5 h-5 rounded-full border border-[#ff6a00] flex items-center justify-center text-[#ff6a00] mt-0.5 shrink-0">
                           <Check className="w-3.5 h-3.5 stroke-[3]" />
                         </div>
                         <div>
-                          <h4 className="font-extrabold text-sm text-neutral-900">Refresher Course</h4>
-                          <p className="text-[11px] text-neutral-500 mt-0.5 leading-relaxed font-sans">
+                          <h4 className="font-bold text-sm text-neutral-900">Refresher Course</h4>
+                          <p className="text-[12px] text-neutral-500 mt-0.5 leading-relaxed font-sans">
                             Already know how to drive? Revitalize your road confidence inside heavy traffic lanes.
                           </p>
                         </div>
                       </div>
+                    </div>
+                    
+                    {/* Apply Now Button Section */}
+                    <div className="pt-6">
+                      <button className="flex items-center justify-center gap-2 px-8 py-3.5 border-[2px] border-[#ff6a00] text-[#ff6a00] font-bold rounded-full hover:bg-[#ff6a00] hover:text-white transition-colors duration-300 w-fit">
+                        APPLY NOW <ArrowRight className="w-4 h-4 ml-1" />
+                      </button>
                     </div>
                   </div>
                 </div>
