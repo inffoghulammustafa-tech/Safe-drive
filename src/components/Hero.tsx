@@ -11,10 +11,10 @@ const TypewriterText = ({ text }: { text: string }) => {
       whileInView="visible"
       viewport={{ once: true, margin: "-10%" }}
       variants={{
-        hidden: { opacity: 0 },
+        hidden: { opacity: 1 },
         visible: {
           opacity: 1,
-          transition: { staggerChildren: 0.015, delayChildren: 0.2 }
+          transition: { staggerChildren: 0.03, delayChildren: 0.2 }
         }
       }}
     >
@@ -22,8 +22,8 @@ const TypewriterText = ({ text }: { text: string }) => {
         <motion.span
           key={i}
           variants={{
-            hidden: { opacity: 0, display: "none" },
-            visible: { opacity: 1, display: "inline" }
+            hidden: { opacity: 0 },
+            visible: { opacity: 1 }
           }}
         >
           {char}
@@ -375,48 +375,51 @@ export const Hero: React.FC<HeroProps> = ({ onActionClick, activeTab, setActiveT
               {/* Grid of 3 custom boxes */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {/* Box 1 */}
-                <div className="bg-white border border-neutral-200 rounded-3xl p-8 sm:p-10 flex flex-col items-start gap-4 shadow-sm hover:shadow-md transition-shadow duration-300">
-                  <div className="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 shrink-0">
-                    <FileText className="w-6 h-6 stroke-[2.5]" />
+                <div className="group bg-white border border-neutral-200 rounded-3xl p-8 sm:p-12 pb-14 min-h-[300px] flex flex-col items-start gap-5 shadow-sm hover:shadow-xl transition-all duration-500 relative overflow-hidden">
+                  <div className="absolute left-0 bottom-0 w-full h-[4px] bg-gradient-to-r from-red-600 to-orange-500 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-700 ease-out" />
+                  <div className="w-14 h-14 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 shrink-0">
+                    <FileText className="w-7 h-7 stroke-[2.5]" />
                   </div>
                   <div>
-                    <h3 className="font-extrabold text-base sm:text-lg text-neutral-900 leading-tight">
+                    <h3 className="font-extrabold text-lg sm:text-xl text-neutral-900 leading-tight">
                       Experienced & Certified Instructors
                     </h3>
-                    <div className="w-8 h-[3px] bg-[#ff6a00] mt-3 mb-2 rounded-full"></div>
-                    <p className="text-xs sm:text-sm text-neutral-500 leading-relaxed font-sans">
+                    <div className="w-10 h-[3px] bg-[#ff6a00] mt-4 mb-3 rounded-full"></div>
+                    <p className="text-sm sm:text-base text-neutral-500 leading-relaxed font-sans mt-2">
                       <TypewriterText text="Our professional trainers provide hands-on learning with dual control safety cars." />
                     </p>
                   </div>
                 </div>
 
                 {/* Box 2 */}
-                <div className="bg-white border border-neutral-200 rounded-3xl p-8 sm:p-10 flex flex-col items-start gap-4 shadow-sm hover:shadow-md transition-shadow duration-300">
-                  <div className="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 shrink-0">
-                    <Settings className="w-6 h-6 stroke-[2.5]" />
+                <div className="group bg-white border border-neutral-200 rounded-3xl p-8 sm:p-12 pb-14 min-h-[300px] flex flex-col items-start gap-5 shadow-sm hover:shadow-xl transition-all duration-500 relative overflow-hidden">
+                  <div className="absolute left-0 bottom-0 w-full h-[4px] bg-gradient-to-r from-red-600 to-orange-500 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-700 ease-out" />
+                  <div className="w-14 h-14 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 shrink-0">
+                    <Settings className="w-7 h-7 stroke-[2.5]" />
                   </div>
                   <div>
-                    <h3 className="font-extrabold text-base sm:text-lg text-neutral-900 leading-tight">
+                    <h3 className="font-extrabold text-lg sm:text-xl text-neutral-900 leading-tight">
                       Customized Learning Programs
                     </h3>
-                    <div className="w-8 h-[3px] bg-transparent mt-3 mb-2 rounded-full"></div>
-                    <p className="text-xs sm:text-sm text-neutral-500 leading-relaxed font-sans">
+                    <div className="w-10 h-[3px] bg-transparent mt-4 mb-3 rounded-full"></div>
+                    <p className="text-sm sm:text-base text-neutral-500 leading-relaxed font-sans mt-2">
                       <TypewriterText text="We offer flexible courses designed for beginners, intermediates, and advanced drivers." />
                     </p>
                   </div>
                 </div>
 
                 {/* Box 3 */}
-                <div className="bg-white border border-neutral-200 rounded-3xl p-8 sm:p-10 flex flex-col items-start gap-4 shadow-sm hover:shadow-md transition-shadow duration-300">
-                  <div className="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 shrink-0">
-                    <ShieldCheck className="w-6 h-6 stroke-[2.5]" />
+                <div className="group bg-white border border-neutral-200 rounded-3xl p-8 sm:p-12 pb-14 min-h-[300px] flex flex-col items-start gap-5 shadow-sm hover:shadow-xl transition-all duration-500 relative overflow-hidden">
+                  <div className="absolute left-0 bottom-0 w-full h-[4px] bg-gradient-to-r from-red-600 to-orange-500 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-700 ease-out" />
+                  <div className="w-14 h-14 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 shrink-0">
+                    <ShieldCheck className="w-7 h-7 stroke-[2.5]" />
                   </div>
                   <div>
-                    <h3 className="font-extrabold text-base sm:text-lg text-neutral-900 leading-tight">
+                    <h3 className="font-extrabold text-lg sm:text-xl text-neutral-900 leading-tight">
                       Traffic Rules Training
                     </h3>
-                    <div className="w-8 h-[3px] bg-transparent mt-3 mb-2 rounded-full"></div>
-                    <p className="text-xs sm:text-sm text-neutral-500 leading-relaxed font-sans">
+                    <div className="w-10 h-[3px] bg-transparent mt-4 mb-3 rounded-full"></div>
+                    <p className="text-sm sm:text-base text-neutral-500 leading-relaxed font-sans mt-2">
                       <TypewriterText text="We emphasize defensive driving, road signs boards, and Punjab traffic rules awareness." />
                     </p>
                   </div>
