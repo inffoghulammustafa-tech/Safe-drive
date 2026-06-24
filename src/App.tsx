@@ -7,6 +7,7 @@ import { SignQuiz } from "./components/SignQuiz";
 import { AiAssistant } from "./components/AiAssistant";
 import { MyBookings } from "./components/MyBookings";
 import { PricingPage } from "./components/PricingPage";
+import { ContactPage } from "./components/ContactPage";
 import { Footer } from "./components/Footer";
 import { StudentBooking } from "./types";
 import { AlertCircle, HelpCircle, ArrowUp } from "lucide-react";
@@ -24,7 +25,7 @@ export default function App() {
   // Scroll smoothly to any specific target segment
   const handleNavClick = (sectionId: string) => {
     setActiveSection(sectionId);
-    if (sectionId === "home" || sectionId === "logo" || sectionId === "pricing") {
+    if (sectionId === "home" || sectionId === "logo" || sectionId === "pricing" || sectionId === "contact") {
       window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
       setTimeout(() => {
@@ -60,7 +61,9 @@ export default function App() {
 
       {/* 2. Main Content Container */}
       {activeSection === "pricing" ? (
-        <PricingPage onBackToHome={() => handleNavClick("home")} />
+        <PricingPage onBackToHome={() => handleNavClick("home")} onContactUs={() => handleNavClick("contact")} />
+      ) : activeSection === "contact" ? (
+        <ContactPage onContactUs={() => handleNavClick("contact")} />
       ) : (
         <main className="relative z-10">
           
