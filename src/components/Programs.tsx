@@ -127,12 +127,12 @@ export const Programs: React.FC<ProgramsProps> = ({ onSelectProgram }) => {
                 onClick={() => onSelectProgram("pricing")}
                 className="bg-[#151b26] rounded-2xl p-6 flex flex-col items-center text-center border border-[#2a3441] hover:border-orange-500/80 hover:shadow-[0_0_25px_-5px_rgba(255,106,0,0.5)] transition-all duration-75 group cursor-pointer"
               >
-                <div className="bg-white rounded-[14px] w-full h-32 mb-6 flex items-center justify-center p-4">
-                  {/* Mock Logo 1 */}
-                  <div className="w-20 h-20 rounded-full border-[5px] border-[#20603d] flex items-center justify-center relative">
-                    <div className="absolute inset-1 border border-[#20603d] rounded-full"></div>
-                    <div className="text-[#20603d] text-[9px] font-black uppercase text-center leading-[1.1]">Pakistan<br/>Safety<br/>Council</div>
-                  </div>
+                <div className="bg-white rounded-[14px] w-full h-32 mb-6 overflow-hidden relative border border-slate-100 flex items-center justify-center">
+                  <img 
+                    src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&q=80&w=600" 
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+                    alt="Beginner Driving"
+                  />
                 </div>
                 <h3 className="text-[1.15rem] font-bold text-white group-hover:text-orange-500 transition-colors duration-75 mb-6 leading-tight">
                   Beginner Driving<br/>Course
@@ -150,12 +150,24 @@ export const Programs: React.FC<ProgramsProps> = ({ onSelectProgram }) => {
                 onClick={() => onSelectProgram("pricing")}
                 className="bg-[#151b26] rounded-2xl p-6 flex flex-col items-center text-center border border-[#2a3441] hover:border-orange-500/80 hover:shadow-[0_0_25px_-5px_rgba(255,106,0,0.5)] transition-all duration-75 group cursor-pointer"
               >
-                <div className="bg-white rounded-[14px] w-full h-32 mb-6 flex items-center justify-center p-4">
-                  {/* Mock Logo 2 */}
-                  <div className="w-[4.5rem] h-20 bg-[#355c96] rounded-t-xl rounded-b-[2rem] flex flex-col items-center justify-center border-4 border-[#ffd700] p-1 shadow-sm relative">
-                     <span className="text-[#ffd700] text-[6px] font-bold absolute top-2 text-center leading-tight">CITY TRAFFIC<br/>POLICE</span>
-                     <span className="text-white text-[7px] font-black absolute bottom-4 text-center">LAHORE</span>
-                  </div>
+                <div className="bg-white rounded-[14px] w-full h-32 mb-6 overflow-hidden relative border border-slate-100 flex items-center justify-center">
+                  <img 
+                    src="https://i.pinimg.com/236x/e6/11/9d/e6119d1f14663d1a36b257d18f4a164e.jpg" 
+                    onError={(e) => {
+                      const fallbacks = [
+                        "https://i.pinimg.com/originals/e6/11/9d/e6119d1f14663d1a36b257d18f4a164e.jpg",
+                        "https://i.pinimg.com/736x/e6/11/9d/e6119d1f14663d1a36b257d18f4a164e.jpg",
+                        "https://i.pinimg.com/564x/e6/11/9d/e6119d1f14663d1a36b257d18f4a164e.jpg"
+                      ];
+                      const currentSrc = e.currentTarget.src;
+                      const nextIndex = fallbacks.indexOf(currentSrc) + 1;
+                      if (nextIndex < fallbacks.length) {
+                        e.currentTarget.src = fallbacks[nextIndex];
+                      }
+                    }}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+                    alt="Confidence Booster"
+                  />
                 </div>
                 <h3 className="text-[1.15rem] font-bold text-white group-hover:text-orange-500 transition-colors duration-75 mb-6 leading-tight">
                   Confidence Booster<br/>Class
@@ -173,15 +185,26 @@ export const Programs: React.FC<ProgramsProps> = ({ onSelectProgram }) => {
                 onClick={() => onSelectProgram("pricing")}
                 className="bg-[#151b26] rounded-2xl p-6 flex flex-col items-center text-center border border-[#2a3441] hover:border-orange-500/80 hover:shadow-[0_0_25px_-5px_rgba(255,106,0,0.5)] transition-all duration-75 group cursor-pointer"
                >
-                <div className="bg-white rounded-[14px] w-full h-32 mb-6 flex items-center justify-center p-4">
-                  {/* Mock Logo 3 */}
-                  <div className="w-20 h-20 rounded-full border-[4px] border-[#e32636] flex flex-col items-center justify-center relative overlow-hidden">
-                     <div className="flex flex-col items-center mt-1">
-                       <span className="text-[#e32636] text-[8px] font-black uppercase text-center leading-none">Road Safety</span>
-                       <span className="text-[#e32636] text-[6px] font-bold uppercase text-center leading-none mt-0.5">Council of Pakistan</span>
-                     </div>
-                     <Car className="w-6 h-6 text-[#e32636] mt-1" strokeWidth={2.5} />
-                  </div>
+                <div className="bg-white rounded-[14px] w-full h-32 mb-6 overflow-hidden relative border border-slate-100 flex items-center justify-center">
+                  <img 
+                    src="https://i.pinimg.com/webp87/1200x/9e/1e/7c/9e1e7c7983352dc78b81a3dd53fc4013.webp" 
+                    onError={(e) => {
+                      const fallbacks = [
+                        "https://i.pinimg.com/originals/9e/1e/7c/9e1e7c7983352dc78b81a3dd53fc4013.jpg",
+                        "https://i.pinimg.com/736x/9e/1e/7c/9e1e7c7983352dc78b81a3dd53fc4013.jpg",
+                        "https://i.pinimg.com/1200x/9e/1e/7c/9e1e7c7983352dc78b81a3dd53fc4013.jpg",
+                        "https://i.pinimg.com/564x/9e/1e/7c/9e1e7c7983352dc78b81a3dd53fc4013.jpg",
+                        "https://i.pinimg.com/236x/9e/1e/7c/9e1e7c7983352dc78b81a3dd53fc4013.jpg"
+                      ];
+                      const currentSrc = e.currentTarget.src;
+                      const nextIdx = fallbacks.indexOf(currentSrc) + 1;
+                      if (nextIdx < fallbacks.length) {
+                        e.currentTarget.src = fallbacks[nextIdx];
+                      }
+                    }}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+                    alt="Road Test Intensive"
+                  />
                 </div>
                 <h3 className="text-[1.15rem] font-bold text-white group-hover:text-orange-500 transition-colors duration-75 mb-6 leading-tight">
                   Road Test Intensive<br/>Prep
@@ -199,14 +222,24 @@ export const Programs: React.FC<ProgramsProps> = ({ onSelectProgram }) => {
                 onClick={() => onSelectProgram("pricing")}
                 className="bg-[#151b26] rounded-2xl p-6 flex flex-col items-center text-center border border-[#2a3441] hover:border-orange-500/80 hover:shadow-[0_0_25px_-5px_rgba(255,106,0,0.5)] transition-all duration-75 group cursor-pointer"
               >
-                <div className="bg-white rounded-[14px] w-full h-32 mb-6 flex items-center justify-center p-4">
-                  {/* Mock Logo 4: Slippery road diamond */}
-                  <div className="w-[3.5rem] h-[3.5rem] bg-[#ffd700] rounded-md rotate-45 flex items-center justify-center border-4 border-black">
-                    <div className="-rotate-45 flex flex-col items-center ml-0.5 mt-1">
-                       <Car className="w-5 h-5 text-black -mb-1" strokeWidth={3} />
-                       <div className="text-black text-[12px] font-black tracking-[0.05em] mt-1 italic">~ ~</div>
-                    </div>
-                  </div>
+                <div className="bg-white rounded-[14px] w-full h-32 mb-6 overflow-hidden relative border border-slate-100 flex items-center justify-center">
+                  <img 
+                    src="https://i.pinimg.com/736x/88/5d/5c/885d5cfef7f27cf8ddaf7593671e9f3d.jpg" 
+                    onError={(e) => {
+                      const fallbacks = [
+                        "https://i.pinimg.com/originals/88/5d/5c/885d5cfef7f27cf8ddaf7593671e9f3d.jpg",
+                        "https://i.pinimg.com/736x/88/5d/5c/885d5cfef7f27cf8ddaf7593671e9f3d.jpg",
+                        "https://i.pinimg.com/564x/88/5d/5c/885d5cfef7f27cf8ddaf7593671e9f3d.jpg"
+                      ];
+                      const currentSrc = e.currentTarget.src;
+                      const nextIndex = fallbacks.indexOf(currentSrc) + 1;
+                      if (nextIndex < fallbacks.length) {
+                        e.currentTarget.src = fallbacks[nextIndex];
+                      }
+                    }}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+                    alt="Road Sign Test"
+                  />
                 </div>
                 <h3 className="text-[1.15rem] font-bold text-[#ff6a00] group-hover:text-white transition-colors duration-75 mb-6 leading-tight">
                   Road Sign Test<br/>&nbsp;

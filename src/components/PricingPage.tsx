@@ -845,11 +845,11 @@ export function PricingPage({ onBackToHome, onContactUs }: PricingPageProps) {
         }
       `}</style>
       <div className="max-w-[1200px] mx-auto relative z-10">
-        <div className="relative rounded-[24px] overflow-hidden p-[1px] group cursor-pointer">
-          {/* Animated Border Gradient (visible on hover, small line, slower) */}
+        <div className="relative rounded-[24px] overflow-hidden p-[2px] group cursor-pointer">
+          {/* Animated Border Gradient (Single rotating glowing dot/circle) */}
           <div
-            className="absolute top-1/2 left-1/2 w-[200%] h-[200%] bg-[conic-gradient(from_0deg,transparent_0%,transparent_95%,rgba(255,255,255,1)_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-700"
-            style={{ animation: "spin-border 8s linear infinite", transformOrigin: "center" }}
+            className="absolute top-1/2 left-1/2 w-[200%] h-[200%] bg-[conic-gradient(from_0deg,transparent_0%,transparent_97.5%,rgba(234,88,12,0.4)_98.5%,rgba(255,255,255,1)_99.5%,rgba(234,88,12,0.4)_100%)] opacity-100 blur-[2px]"
+            style={{ animation: "spin-border 18s linear infinite", transformOrigin: "center" }}
           />
 
           <div className="bg-[#10141d] rounded-[23px] p-8 md:p-14 flex flex-col md:flex-row items-center justify-between gap-8 md:gap-14 relative overflow-hidden shadow-2xl z-10 h-full transition-colors duration-300 group-hover:bg-[#121824]">

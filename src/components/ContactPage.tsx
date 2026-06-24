@@ -201,19 +201,19 @@ export function ContactPage({ onContactUs }: ContactPageProps) {
               Our main office and safety parking arena are situated at Millat Town on Millat Road, Faisalabad. We feature spacious driving ground templates and theoretical class facilities designed for professional training.
             </p>
 
-            <div className="space-y-6 mb-8">
-              <div className="flex gap-4">
-                <div className="w-8 h-8 rounded-full bg-[#ff6a00]/10 text-[#ea580c] flex items-center justify-center text-xs font-bold shrink-0">1</div>
+            <div className="space-y-4 mb-8">
+              <div className="bg-[#f8fafc] border border-slate-100 rounded-2xl p-5 flex items-start gap-4 shadow-sm hover:shadow-md transition-all duration-300">
+                <div className="w-10 h-10 rounded-xl bg-[#ea580c]/10 text-[#ea580c] flex items-center justify-center text-sm font-bold shrink-0">1</div>
                 <div>
-                  <h4 className="text-[13px] font-bold text-slate-800 mb-1">Main Office</h4>
-                  <p className="text-[11px] text-slate-500">Visit us to process registration paper works and permit documentations.</p>
+                  <h4 className="text-[14px] font-bold text-slate-800 mb-1">Main Office</h4>
+                  <p className="text-[12px] text-slate-500 leading-relaxed">Visit us to process registration paper works and permit documentations.</p>
                 </div>
               </div>
-              <div className="flex gap-4">
-                <div className="w-8 h-8 rounded-full bg-[#ff6a00]/10 text-[#ea580c] flex items-center justify-center text-xs font-bold shrink-0">2</div>
+              <div className="bg-[#f8fafc] border border-slate-100 rounded-2xl p-5 flex items-start gap-4 shadow-sm hover:shadow-md transition-all duration-300">
+                <div className="w-10 h-10 rounded-xl bg-[#ea580c]/10 text-[#ea580c] flex items-center justify-center text-sm font-bold shrink-0">2</div>
                 <div>
-                  <h4 className="text-[13px] font-bold text-slate-800 mb-1">Practice Tracks</h4>
-                  <p className="text-[11px] text-slate-500">Practice reverse parallel layout parking and gear shifts safely inside our yard.</p>
+                  <h4 className="text-[14px] font-bold text-slate-800 mb-1">Practice Tracks</h4>
+                  <p className="text-[12px] text-slate-500 leading-relaxed">Practice reverse parallel layout parking and gear shifts safely inside our yard.</p>
                 </div>
               </div>
             </div>
@@ -222,13 +222,13 @@ export function ContactPage({ onContactUs }: ContactPageProps) {
               href="https://www.google.com/maps?q=Millat+Road,+Millat+Town,+Faisalabad" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-block border border-slate-200 hover:border-[#ea580c] hover:bg-[#fff7f2] text-slate-700 hover:text-[#ea580c] px-6 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all"
+              className="inline-flex items-center gap-2 border border-slate-200 hover:border-[#ea580c] hover:bg-[#fff7f2] text-slate-700 hover:text-[#ea580c] px-6 py-3 rounded-2xl text-[11px] font-bold uppercase tracking-widest transition-all bg-[#f8fafc] shadow-sm"
             >
               GET GOOGLE MAPS ROUTE ↗
             </a>
           </div>
 
-          <div className="flex-1 w-full bg-slate-100 rounded-2xl h-[300px] border border-slate-200 overflow-hidden relative">
+          <div className="flex-1 w-full bg-slate-100 rounded-[24px] h-[450px] border border-slate-200 overflow-hidden relative shadow-sm">
             {/* Fake Map Illustration */}
             <div className="absolute inset-0 opacity-50" style={{
               backgroundImage: "url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJncmlkIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiPjxwYXRoIGQ9Ik0gNDAgMCBMIDAgMCAwIDQwIiBmaWxsPSJub25lIiBzdHJva2U9IiNlNGRlNGMiIHN0cm9rZS13aWR0aD0iMSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmlkKSIvPjwvc3ZnPg==')"
@@ -277,10 +277,10 @@ export function ContactPage({ onContactUs }: ContactPageProps) {
           }
         `}</style>
         <div className="max-w-[1200px] mx-auto relative z-10">
-          <div className="relative rounded-[24px] overflow-hidden p-[1px] group cursor-pointer">
+          <div className="relative rounded-[24px] overflow-hidden p-[2px] group cursor-pointer">
             <div
-              className="absolute top-1/2 left-1/2 w-[200%] h-[200%] bg-[conic-gradient(from_0deg,transparent_0%,transparent_95%,rgba(255,255,255,1)_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-700"
-              style={{ animation: "spin-border-contact 8s linear infinite", transformOrigin: "center" }}
+              className="absolute top-1/2 left-1/2 w-[200%] h-[200%] bg-[conic-gradient(from_0deg,transparent_0%,transparent_97.5%,rgba(234,88,12,0.4)_98.5%,rgba(255,255,255,1)_99.5%,rgba(234,88,12,0.4)_100%)] opacity-100 blur-[2px]"
+              style={{ animation: "spin-border-contact 18s linear infinite", transformOrigin: "center" }}
             />
 
             <div className="bg-[#10141d] rounded-[23px] p-8 md:p-14 flex flex-col md:flex-row items-center justify-between gap-8 md:gap-14 relative overflow-hidden shadow-2xl z-10 h-full transition-colors duration-300 group-hover:bg-[#121824]">
